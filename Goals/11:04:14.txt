@@ -1,0 +1,10 @@
+Goals for 11/04/14:
+Overplot age specific isochron on color diagram!
+Reverse direction of Y-axis for the color diagrams!
+Seperate on the same color diagram the companions and primaries! (use diff symbol)
+	Plot error on the color diagram (will look like a + on each position)! (look for plot error function!)
+	*Just changed blanket uncertainty to be 0.01 for binary mass error prop.*
+In the future: ~ color diagram for single stars!! (taken from 2MASS)
+Find ages!!!  Make isocron for age specific clusters!
+
+2 goals: completed color diagram, detection limit

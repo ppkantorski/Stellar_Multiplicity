@@ -1,0 +1,6 @@
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb19/M56_red/J/img1/M56_Jfinal.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb19/M56_red/J/img2/M56_Jfinal.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb19/M56_red/H/img1/M56_Hfinal.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb19/M56_red/H/img2/M56_Hfinal.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb19/M56_red/K/img1/M56_Kfinal.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb19/M56_red/K/img2/M56_Kfinal.fits

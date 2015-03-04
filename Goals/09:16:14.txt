@@ -1,0 +1,27 @@
+Goals from 09/16/14:
+
+For Astrometry,
+	Hogg 13 & M141-2 need Sep. to be rescaled by .0495/.05! (uncertanties from PSF)
+	For psf stars, use quad. sum of STDs for error estimation.
+		Find calibration uncertainty from website for blanket calibration for astrometry.
+	Only fill in uncertainty for Sep. and PA!
+
+For photometry,
+	PSF Stars ~ 0.05 mag or 5% should be use for Delta J, H, K unless uncertainty is larger.
+	Use blanket of .03 mag for binaries unless spreadsheet has a larger uncertainty.
+	Use half distance for undertainty of binaries
+	Find error associated with cluster distances.
+	Only fill in uncertainty for delta j, h, and k.
+	
+(!) Double check my values are use for missing binaries and final missed!!
+
+From before:
+	Compute abs. magnitude for single stars similar to what needs to be done for Hogg5.
+	Build table with HD names for all stars (including singles).  Also include multiplicities.  Sort by cluster.
+		Take from newest cataloge, use coordinates on SIMBAD. (Emailed recently.)
+		Use script on SIMBAD with coordinates to return names for all stars. (Example was emailed to me.)
+		(!) Atleast try to run the script on a few stars...
+	Retrieve Isochrones!!
+		use 0.1 -> 7 Solar mass (primaries and companions will be within range!)
+		Below 0.5 solar mass, some of the calculations are not correct...
+		Will create another set to stitch to upper solar mass bound.

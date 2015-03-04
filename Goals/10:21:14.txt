@@ -1,0 +1,7 @@
+Goals for 10/21/14:
+1.  Finish up leakage calculations.
+2.  Isochron interpolation / poly fit.
+3.  Find new source for age of clusters (literature search).
+	a. Age, original reference, and the method used to find the age.
+	b. Sidenote: There may be some disccusion where they guess where the age is.  If so, find also! (may be hidden in analysis section)
+4.  If there is extra time, plot the magnitudes on the isochron!

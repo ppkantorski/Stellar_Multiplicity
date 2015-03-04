@@ -1,0 +1,7 @@
+Leakage Flux Avg. #1: 2235.21207886
+Leakage Flux STD #1: 97.7098387482
+
+Leakage Flux Avg. #2: 2534.2543335
+Leakage Flux STD #2: 123.607470129
+
+flux_leak = 2350.2131971631297

@@ -1,0 +1,4 @@
+Hogg 5: (convert to abs j, h, k)
+j_m ~ 8.701
+h_m ~ 8.475
+k_m ~ 8.364

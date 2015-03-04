@@ -1,0 +1,57 @@
+- get familiar with stellar multiplicity and environment dependence
+
+- look at reduced images; do a visual inspection to check multiplicity status and approximate precision of relative astrometry/photometry
+
+- literature search on clusters: up-to-date info on distance, age,
+extinction, [NIR] color-magnitude diagrams, ...
+
+- determine star properties (Teff, photometry): SIMBAD, plus cluster papers
+
+- generate appropriate isochrones and derive stellar masses for primaries
+
+- determine masses for secondaries
+
+- compute detection limits in flux ratio and in mass ratio
+
+- Malmquist bias evaluation
+
+- chance alignment analysis, proper motion confirmation for wide companions?
+
+- statistical analysis: BF, sep distribution, q distribution  (Bayesian?)
+
+
+========
+Readings
+========
+
+- Duchene & Kraus (2013): overall review of stellar multiplicity
+  http://adsabs.harvard.edu/abs/2013ARA%26A..51..269D
+
+- Kouwenhoven et al. (2007a): example of an AO survey of A-type stars
+  http://adsabs.harvard.edu/abs/2007A%26A...464..581K
+
+- Kouwenhoven et al. (2007b): example of statistical analysis of multiplicity
+  http://adsabs.harvard.edu/abs/2007A%26A...474...77K
+
+
+===============
+Useful websites
+===============
+
+- ADS (search tool for research articles)
+  http://adsabs.harvard.edu/abstract_service.html
+
+- SIMBAD (basic information on all astronomical objects)
+  http://simbad.u-strasbg.fr/simbad/sim-fid
+
+- VIZIER (access point to astronomical catalogs [and "photometry viewer"])
+  http://vizier.cfa.harvard.edu/viz-bin/VizieR/
+
+- WEBDA (database of stellar clusters)
+  http://www.univie.ac.at/webda/navigation.html
+
+- IRSA (archive of many IR and optical large surveys)
+  http://irsa.ipac.caltech.edu/index.html
+
+- Stellar evolutionary models (isochrones):
+  http://astropc0.ulb.ac.be/~siess/pmwiki/pmwiki.php/WWWTools/Isochrones

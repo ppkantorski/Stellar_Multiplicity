@@ -1,0 +1,15 @@
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/IC_2391/HD73340_Kfinal_img1.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/IC_2391/HD73340_Kfinal_img2.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/IC_2391/HD73503_Kfinal_img1.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/IC_2391/HD73503_Kfinal_img2.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/IC_2391/HD73722_Kfinal_img1.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/IC_2391/HD73722_Kfinal_img2.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/IC_2391/Hogg13_Kfinal_img1.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/IC_2391/Hogg13_Kfinal_img2.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/IC_2391/Hogg13_Kfinal_img3.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/IC_2391/PSPC13_Kfinal_img1.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/IC_2391/PSPC13_Kfinal_img2.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/IC_2391/PSPC46_Kfinal_img1.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/IC_2391/PSPC46_Kfinal_img2.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/IC_2391/Hogg5_Kfinal_img1.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/IC_2391/Hogg5_Kfinal_img2.fits

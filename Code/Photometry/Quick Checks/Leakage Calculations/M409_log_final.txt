@@ -1,0 +1,218 @@
+===========================================================================================
+
+File with Directory:
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb19/M409_red/K/img1/M409_Kfinal.fits
+
+Star #1:
+M409_Kfinal
+
+===========================================================================================
+
+Next star? (y|n): n
+
+Position #1 For Noise Calculation.
+--- Noise Position ---
+X Position #1: 101
+Y Position #1: 220
+Enter width of box around sky: 7
+Standard Deviation of Noise #1: 1.68639759319
+
+Position #2 For Noise Calculation.
+--- Noise Position ---
+X Position #2: 224
+Y Position #2: 104
+Enter width of box around sky: 7
+Standard Deviation of Noise #2: 1.83735841468
+
+Standard Deviation of Noise: 1.76187800393
+
+Primary Star Information: 
+Position: x = 166, y = 157
+Maximum Flux: 6493.53417969
+Use Information? (y/n): y
+
+--- Primary Star ---
+X Position #1: 166.0
+Y Position #1: 157.0
+Enter width of box around primary star: 9
+Centroid of primary (x, y): 165.813602227 156.709593494
+
+Insert values to verify star.
+--- Companion Star ---
+Centroid of companion (x, y): 185.771615173 155.056867967
+Max flux for companion:  3088.63140869
+
+--- Leakage Compensation #1 ---
+Position #1 (x,y): 165.813602227 176.735920726
+Leakage Flux #1: 2143.69647217
+
+--- Leakage Compensation #2 ---
+Position #2 (x,y): 151.652850439 170.870345282
+Leakage Flux #2: 2092.69689941
+
+--- Leakage Compensation #3 ---
+Position #2 (x,y): 145.787274995 156.709593494
+Leakage Flux #2: 2312.89654541
+
+--- Leakage Compensation #4 ---
+Position #2 (x,y): 151.652850439 142.548841706
+Leakage Flux #2: 2333.30279541
+
+--- Leakage Compensation #5 ---
+Position #2 (x,y): 165.813602227 136.683266262
+Leakage Flux #2: 2293.46768188
+
+Leakage Flux Avg.: 2235.21207886
+
+Leakage Flux STD: 97.7098387482
+Max flux fixed for companion: 853.419329834
+Companion Flux STD: 97.7098387482
+Calculated Companion Flux: 614.810656018
+Max flux for primary:  98011.0946045
+
+Star #1: M409_Kfinal
+
+Noise STD: 1.76187800393
+
+Angular Seperation (arcsec) 0.991303197996
+Primary Angle (deg): 274.733869459
+Flux #1 / STD: 935.343699036
+Flux #2 / STD: 148.929844009
+Primary Flux: 98011.0946045
+Companion Flux: 614.810656018
+Flux Ratio: 5.50633463332
+
+Comment?: 
+
+Next Star? (y/n) y
+
+
+
+===========================================================================================
+
+File with Directory:
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb19/M409_red/K/img2/M409_Kfinal.fits
+
+Star #2:
+
+
+===========================================================================================
+
+Next star? (y|n): n
+
+Position #1 For Noise Calculation.
+--- Noise Position ---
+X Position #1: 115
+Y Position #1: 215
+Enter width of box around sky: 7
+Standard Deviation of Noise #1: 1.74033903151
+
+Position #2 For Noise Calculation.
+--- Noise Position ---
+X Position #2: 221
+Y Position #2: 107
+Enter width of box around sky: 7
+Standard Deviation of Noise #2: 1.96799244098
+
+Standard Deviation of Noise: 1.85416573624
+
+Primary Star Information: 
+Position: x = 128, y = 247
+Maximum Flux: 8092.63037109
+Use Information? (y/n): n
+
+Insert values to verify star.
+--- Primary Star ---
+X Position #1: 167
+Y Position #1: 157
+Enter width of box around primary star: 9
+Centroid of primary (x, y): 166.387454507 156.611230623
+
+Insert values to verify star.
+--- Companion Star ---
+Centroid of companion (x, y): 186.257506203 155.023290118
+Max flux for companion:  2767.20947266
+
+--- Leakage Compensation #1 ---
+Position #1 (x,y): 166.387454507 176.544632476
+Leakage Flux #1: 2366.28588867
+
+--- Leakage Compensation #2 ---
+Position #2 (x,y): 152.292410885 170.706274245
+Leakage Flux #2: 2556.16821289
+
+--- Leakage Compensation #3 ---
+Position #2 (x,y): 146.454052654 156.611230623
+Leakage Flux #2: 2738.87744141
+
+--- Leakage Compensation #4 ---
+Position #2 (x,y): 152.292410885 142.516187
+Leakage Flux #2: 2550.32788086
+
+--- Leakage Compensation #5 ---
+Position #2 (x,y): 166.387454507 136.67782877
+Leakage Flux #2: 2459.61224365
+
+Leakage Flux Avg.: 2534.2543335
+
+Leakage Flux STD: 123.607470129
+Max flux fixed for companion: 232.95513916
+Companion Flux STD: 123.607470129
+Calculated Companion Flux: 614.810656018
+Max flux for primary:  82162.9669189
+
+Star #2: 
+
+Noise STD: 1.85416573624
+
+Angular Seperation (arcsec) 0.986703391737
+Primary Angle (deg): 274.569154616
+Flux #1 / STD: 855.105758586
+Flux #2 / STD: 138.31002651
+Primary Flux: 82162.9669189
+Companion Flux: 614.810656018
+Flux Ratio: 5.31483681788
+
+Comment?: 
+
+
+
+Calculations for Error propogation and the total delta mag were done in ipython.
+
+In [1]: import numpy as np
+
+In [2]: c_flux = 614.810656018
+
+In [3]: c_std = 97.7098387482
+
+In [4]: error = np.sqrt(0 + (-2.5 / (c_flux*np.log(10)) * c_std)**2)
+
+In [5]: error
+Out[5]: 0.17255248986265703
+
+In [6]: c_std = 123.607470129
+
+In [7]: error = np.sqrt(0 + (-2.5 / (c_flux*np.log(10)) * c_std)**2)
+
+In [8]: error
+Out[8]: 0.21828688911612673
+
+In [9]: e_1 = 0.17255248986265703
+
+In [10]: e_2 = error
+
+In [11]: e_tot = (1/e_1**2 + 1/e_2**2)**(-0.5)
+
+In [12]: e_tot
+Out[12]: 0.13536687532350247
+
+In [13]: p_1 = 98011.0946045
+
+In [14]: del_K_1 = 5.50633463332
+
+In [15]: del_K_2 = 5.31483681788
+
+In [16]: del_K = (del_K_1/e_1**2 + del_K_2/e_2**2) * e_tot**2
+
+In [17]: del_K
+Out[17]: 5.4326913184154941

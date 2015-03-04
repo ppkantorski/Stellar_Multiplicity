@@ -1,0 +1,11 @@
+1.  Double check SIMBAD coordinates are from 2000.
+2.  Remove stars that were not on cluster list from script!
+3.  Use Johan's spreadsheet for binaries to find the real seperation (more digits).
+		Need 3 digit precision to incorporate the error!
+		Fix seperation for PSF also!
+4.  For binary PA, Johan's uncertainty is not here.
+		Just use the blanket uncertainty.
+5.  For binary sep, use quadratic sum of his uncertainty with blanket.
+		Include blanket for all faint companions!!
+6.  For single stars, use conversion from App to Abs!
+		Make new table for singles!!

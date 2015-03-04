@@ -1,0 +1,227 @@
+===========================================================================================
+
+File with Directory:
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb19/M42_red/K/img1/M42_Kfinal.fits
+
+Star #1:
+M42_Kfinal
+
+===========================================================================================
+
+Next star? (y|n): n
+
+Position #1 For Noise Calculation.
+--- Noise Position ---
+X Position #1: 111
+Y Position #1: 216
+Enter width of box around sky: 7
+Standard Deviation of Noise #1: 1.85880976057
+
+Position #2 For Noise Calculation.
+--- Noise Position ---
+X Position #2: 230
+Y Position #2: 95
+Enter width of box around sky: 7
+Standard Deviation of Noise #2: 1.61219395897
+
+Standard Deviation of Noise: 1.73550185977
+
+Primary Star Information: 
+Position: x = 164, y = 154
+Maximum Flux: 9510.61132812
+Use Information? (y/n): y
+
+--- Primary Star ---
+X Position #1: 164.0
+Y Position #1: 154.0
+Enter width of box around primary star: 7
+Centroid of primary (x, y): 163.553004661 153.653127658
+
+Insert values to verify star.
+--- Companion Star ---
+X Position #2: 145
+Y Position #2: 194
+Enter width of box around companion star: 5
+Centroid of companion (x, y): 144.425078421 193.432008616
+Max flux for companion:  1603.39080811
+
+--- Leakage Compensation #1 ---
+X Position #1: 138.5
+Y Position #1: 118.75
+Leakage Flux #1: 694.829284668
+
+--- Leakage Compensation #2 ---
+X Position #2: 207.5
+Y Position #2: 153
+Leakage Flux #2: 818.050231934
+
+Leakage Flux: 756.439758301
+Max flux fixed for companion: 846.951049805
+Max flux for primary:  159699.268066
+
+Star #1: M42_Kfinal
+
+Noise STD: 1.73550185977
+
+Angular Seperation (arcsec) 2.18487243193
+Primary Angle (deg): 154.319131507
+Flux #1 / STD: 1195.93183735
+Flux #2 / STD: 97.8489789491
+Primary Flux: 159699.268066
+Companion Flux: 846.951049805
+Flux Ratio: 5.68861153754
+
+
+
+
+
+===========================================================================================
+
+File with Directory:
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb19/M42_red/K/img2/M42_Kfinal.fits
+
+Star #2:
+
+
+===========================================================================================
+
+Next star? (y|n): n
+
+Position #1 For Noise Calculation.
+--- Noise Position ---
+X Position #1: 104
+Y Position #1: 222
+Enter width of box around sky: 7
+Standard Deviation of Noise #1: 1.3951508915
+
+Position #2 For Noise Calculation.
+--- Noise Position ---
+X Position #2: 226
+Y Position #2: 106
+Enter width of box around sky: 7
+Standard Deviation of Noise #2: 1.64402786148
+
+Standard Deviation of Noise: 1.51958937649
+
+Primary Star Information: 
+Position: x = 164, y = 154
+Maximum Flux: 14768.4394531
+Use Information? (y/n): y
+
+--- Primary Star ---
+X Position #1: 164.0
+Y Position #1: 154.0
+Enter width of box around primary star: 7
+Centroid of primary (x, y): 163.328408813 153.55089512
+
+Insert values to verify star.
+--- Companion Star ---
+X Position #2: 145
+Y Position #2: 194
+Enter width of box around companion star: 5
+Centroid of companion (x, y): 144.247795151 193.352566704
+Max flux for companion:  1621.64660645
+
+--- Leakage Compensation #1 ---
+X Position #1: 138.5
+Y Position #1: 118.75
+Leakage Flux #1: 616.792724609
+
+--- Leakage Compensation #2 ---
+X Position #2: 207.75
+Y Position #2: 153
+Leakage Flux #2: 712.560180664
+
+Leakage Flux: 664.676452637
+Max flux fixed for companion: 956.970153809
+Max flux for primary:  214229.188477
+
+Star #2: 
+
+Noise STD: 1.51958937649
+
+Angular Seperation (arcsec) 2.18487576607
+Primary Angle (deg): 154.387300953
+Flux #1 / STD: 1386.59789253
+Flux #2 / STD: 103.1519282
+Primary Flux: 214229.188477
+Companion Flux: 956.970153809
+Flux Ratio: 5.87495062381
+
+
+
+
+
+===========================================================================================
+
+File with Directory:
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb19/M42_red/K/img3/M42_Kfinal.fits
+
+Star #3:
+
+
+===========================================================================================
+
+Next star? (y|n): n
+
+Position #1 For Noise Calculation.
+--- Noise Position ---
+X Position #1: 114
+Y Position #1: 216
+Enter width of box around sky: 7
+Standard Deviation of Noise #1: 1.68927724935
+
+Position #2 For Noise Calculation.
+--- Noise Position ---
+X Position #2: 225
+Y Position #2: 106
+Enter width of box around sky: 7
+Standard Deviation of Noise #2: 1.91265395838
+
+Standard Deviation of Noise: 1.80096560387
+
+Primary Star Information: 
+Position: x = 164, y = 154
+Maximum Flux: 13936.7001953
+Use Information? (y/n): y
+
+--- Primary Star ---
+X Position #1: 164.0
+Y Position #1: 154.0
+Enter width of box around primary star: 7
+Centroid of primary (x, y): 163.338428234 153.769067772
+
+Insert values to verify star.
+--- Companion Star ---
+X Position #2: 145
+Y Position #2: 194
+Enter width of box around companion star: 5
+Centroid of companion (x, y): 144.252422486 193.484011643
+Max flux for companion:  1597.30062866
+
+--- Leakage Compensation #1 ---
+X Position #1: 138.5
+Y Position #1: 118.75
+Leakage Flux #1: 610.308074951
+
+--- Leakage Compensation #2 ---
+X Position #2: 207.5
+Y Position #2: 153
+Leakage Flux #2: 696.641571045
+
+Leakage Flux: 653.474822998
+Max flux fixed for companion: 943.825805664
+
+Max flux for primary:  209462.748779
+
+Star #3: 
+
+Noise STD: 1.80096560387
+
+Angular Seperation (arcsec) 2.18112097881
+Primary Angle (deg): 154.332228266
+Flux #1 / STD: 1370.24686804
+Flux #2 / STD: 97.5169716088
+Primary Flux: 209462.748779
+Companion Flux: 943.825805664
+Flux Ratio: 5.86553737756

@@ -1,0 +1,6 @@
+Goals:
+1.  Fit isochrone for age specific clusters!  Retrieve isochrone for each age from website and fit!
+2.  Take isochrone from NextGen models, do the same (will only work for "faint" stars)!
+3.  Make plot of brightness (K mag) vs. mass for each age!
+4.  Below 0.1 and above 7 M_sun, retrieve starname!!
+5.  Next: For each cluster, find a list of low mass stars

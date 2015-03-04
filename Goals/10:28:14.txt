@@ -1,0 +1,8 @@
+On bright end of data, flag down spec. types!
+Make histogram of masses of targets (Kband) (sing & binaries).
+For all stars, find STD of masses from J, H, & K filters.
+Make color mag. Diagram, K vs. J-K and/or K vs H-K for each cluster seperately!!!
+Also make one with all cluster plots on the same plot, distinguishable by color!
+
+For single stars, add uncertainty to AbsK, find corresponding Mass, take the difference above & below from the Mass already listed!
+Data and method for articles for age! Take notes!

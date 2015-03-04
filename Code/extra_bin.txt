@@ -1,0 +1,2 @@
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb17/R110_red/K/img1/R110_Kfinal.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb17/R22a_red/K/img1/R22a_Kfinal.fits

@@ -1,0 +1,12 @@
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb19/HD96654_red/K/img1/HD96654_Kfinal.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb19/M15_red/K/img1/M15_Kfinal.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb19/M130_red/K/img1/M130_Kfinal.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb19/M155_red/K/img1/M155_Kfinal.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb19/M208_red/K/img1/M208_Kfinal.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb19/M278_red/K/img1/M278_Kfinal.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb19/M345_red/K/img1/M345_Kfinal.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb19/M50_red/K/img1/M50_Kfinal.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb19/M56_red/K/img1/M56_Kfinal.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb19/M89_red/K/img1/M89_Kfinal.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb19/M86_red/K/img1/M86_Kfinal.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb19/M42_red/K/img1/M42_Kfinal.fits

@@ -1,0 +1,3 @@
+Goals for 11/25/14:
+1.  For companions, apply poisson's distribution for k=0!
+2.  Estimate detection limits for survey!

@@ -1,0 +1,6 @@
+Goals for 09/30/14:
+
+M86 needs PSF fitting.
+Use 5 diff aper. for the recalculation of the leakage for M409!
+For companion for PSFs, use 0.05mag for uncertainty!!!
+Change uncertainty for singles to 0.01 mag!

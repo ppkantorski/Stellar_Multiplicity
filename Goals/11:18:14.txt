@@ -1,0 +1,9 @@
+1.  Flag suspicious companions & primaries!
+2.  Plot Dusty isochrone!!
+3.  Around .2- .5 M_sun, look for where mass isochrones overlap!  (Oldest and Youngest clusters!)
+4.  Statistical Arguement:
+http://irsa.ipac.caltech.edu/Missions/2mass.html
+	Sum (integrate) up to companion magnitude, divide by actual search area, multiply by (pi * 5^2).
+		-> This gives the average expectation of the # of stars within the 5 arcsec circle!
+		Poisson Distribution: e^-(expectation), k = 0
+		Use about 2 degrees as the search radius!

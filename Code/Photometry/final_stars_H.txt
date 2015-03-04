@@ -1,0 +1,2 @@
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb20/M197_red/H/img1/M197_Hfinal.fits
+/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Datasets/Feb20/M197_red/H/img2/M197_Hfinal.fits
