@@ -16,7 +16,7 @@ def main():
             #K_cross = 5.50
             start = 0
             stop = 13 + 1
-            print stop
+            #print stop
             s_start = 0
             s_stop = 19 + 1
             i == False

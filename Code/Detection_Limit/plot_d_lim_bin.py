@@ -205,10 +205,10 @@ plt.ylabel("Mass Ratio", fontsize='16')
 plt.xscale('log')
 #plt.gca().invert_yaxis()
 
-print 'K_mass', K_mass
-print 'max_mass', max_mass
+#print 'K_mass', K_mass
+#print 'max_mass', max_mass
 for i in range(len(ang_sep)):
-    plt.plot(ang_sep[i], K_mass[i], 'o', color='0.3') #/max_mass[i]
+    plt.plot(ang_sep[i], K_mass[i]/max_mass[start:stop][i], 'o', color='0.3') #/max_mass[i]
 
 print "Saving figure..."
 plt.savefig('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Recalculations/'+cluster+'_mass_K.png')    

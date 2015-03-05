@@ -210,12 +210,17 @@ def main():
                 if final_sep_array[i] == fix_ang_sep_array[j]:
                     final_flux_array.append(fix_flux_array[j])
             
-            if final_sep_array[i] > 1:
+            if final_sep_array[i] > 1.25:
                 for m in range(len(final_flux_array)):
-                    if 3* np.nanstd(final_flux_array) < final_flux_array[m]:
+                    if final_flux_array[m] > (3 * np.nanstd(final_flux_array)):
                         #print 'Bad Pixel Value:', final_flux_array[m]
                         #print 'Seperation:', final_sep_array[i]
                         final_flux_array[m] = np.nan
+                        #print final_flux_array[m]
+                    #if 3* np.nanstd(final_flux_array) < final_flux_array[m]:
+                        #print 'Bad Pixel Value:', final_flux_array[m]
+                        #print 'Seperation:', final_sep_array[i]
+                    #    final_flux_array[m] = np.nan
                         #print final_flux_array[m]
             
             sort_flux_array.append(np.nanstd(final_flux_array) * 5.)
