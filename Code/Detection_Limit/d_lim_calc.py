@@ -129,6 +129,7 @@ def main():
         #print image[np.where(3*STD_image > image)]
         
 
+
         # This code removes values from the picture above 3*STD.
         width = 40
         
