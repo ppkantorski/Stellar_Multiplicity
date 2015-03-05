@@ -92,35 +92,35 @@ def main():
             name = (path.partition(cluster+'/')[2]).partition('_img1.fits')[0]
             if ('_img2.fits' in name) == True:
                 current_img = 'img2'
-                name = (path.partition(cluster+'/')[2]).partition('_img2.fits')[0]
-            if ('_img3.fits' in name )== True:
-                current_img = 'img3'
-                name = (path.partition(cluster+'/')[2]).partition('_img3.fits')[0]
-                
-            print("Star #"+str(var+1)+":")
-            print(name+'\n')
-    
-        
-        try:
-            file = pyfits.open(path)                                                                             
-                                                                                                              
-        except IOError:                                                                                                                         
-            var = var + 1
-            
-            print "Specified file is missing..."
-            print "Opening next file..\n"
-            try:
-                path =  data[var].rstrip()
-            except IndexError:
-                print "End of file list has been reached!\n"
-                sys.exit()
-            
-            print("File with Directory:")
-            print(path+'\n')
-            name = (path.partition(cluster+'/')[2]).partition('_img1.fits')[0]
-            print("Star #"+str(var+1)+":")
-            print(name+'\n')
-            
+                name = (path.partition(cluster+'/')[2]).partition('_img2.fits')[0]                       
+            if ('_img3.fits' in name )== True:                                                           
+                current_img = 'img3'                                                                     
+                name = (path.partition(cluster+'/')[2]).partition('_img3.fits')[0]                       
+                                                                                                         
+            print("Star #"+str(var+1)+":")                                                               
+            print(name+'\n')                                                                             
+                                                                                                         
+                                                                                                         
+        try:                                                                                             
+            file = pyfits.open(path)                                                                     
+                                                                                                         
+        except IOError:                                                                                                    
+            var = var + 1                                                                                
+                                                                                                         
+            print "Specified file is missing..."                                                         
+            print "Opening next file..\n"                                                                
+            try:                                                                                         
+                path =  data[var].rstrip()                                                               
+            except IndexError:                                                                           
+                print "End of file list has been reached!\n"                                             
+                sys.exit()                                                                               
+                                                                                                         
+            print("File with Directory:")                                                                
+            print(path+'\n')                                                                             
+            name = (path.partition(cluster+'/')[2]).partition('_img1.fits')[0]                           
+            print("Star #"+str(var+1)+":")                                                               
+            print(name+'\n')                                                                             
+                                                                                                         
             file = pyfits.open(path)
             
         image = np.copy(file[0].data)
@@ -158,25 +158,25 @@ def main():
         print "Max flux for primary: ", max_flux_1
     
     
-        ### Detection Limit Calculations ###
-        ang_sep_array = []; flux_array = []; circle_array = []
-        for j in range(100, len(image[0])-100, 1):
-            for i in range(100, len(image[1])-100, 1):
-                x_position = i
-                y_position = j
-                max_flux_2 = image[j,i]
-                flux_array.append(max_flux_2)
-                ang_sep_array.append(position_check(x_cent_1, y_cent_1, x_position, y_position)[0])
-        
-        #plt.plot(ang_sep_array, flux_array, '.')
-        #plt.xlabel('Angular Seperation', fontsize='18')
-        #plt.ylabel('Mag_K', fontsize='18')
-        #plt.xscale('log')
-        #plt.gca().invert_yaxis()
-        #plt.show()
-        
-        
-        
+        ### Detection Limit Calculations ###                                                                  # I might have to apply the 3xSTD
+        ang_sep_array = []; flux_array = []                                                                   # condition here instead of below.
+        for j in range(100, len(image[0])-100, 1):                                                            #
+            for i in range(100, len(image[1])-100, 1):                                                        #
+                x_position = i                                                                                #
+                y_position = j                                                                                #
+                max_flux_2 = image[j,i]                                                                       #
+                flux_array.append(max_flux_2)                                                                 #
+                ang_sep_array.append(position_check(x_cent_1, y_cent_1, x_position, y_position)[0])           #
+                                                                                                              #
+        #plt.plot(ang_sep_array, flux_array, '.')                                                             #
+        #plt.xlabel('Angular Seperation', fontsize='18')                                                      #
+        #plt.ylabel('Mag_K', fontsize='18')                                                                   #
+        #plt.xscale('log')                                                                                    #
+        #plt.gca().invert_yaxis()                                                                             #
+        #plt.show()                                                                                           #
+                                                                                                              #
+                                                                                                              #
+                                                                                                              #
         
         N = 100 # total number of pixels in 5 arcsec radius.
         
@@ -245,12 +245,11 @@ def main():
         all_names.append(name)
         all_ang_sep.append(sorted_x)
         all_mag_K.append(sorted_y)
-        all_max_flux.append(max_flux_1)
         
         print all_names
         print "\nSaving data for Star #"+str(var+1)+"..."
         np.savez('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Recalculations/'+cluster+'_bin_data',
-        star_name = all_names, ang_sep=all_ang_sep, mag_K=all_mag_K, max_flux=all_max_flux)
+        star_name = all_names, ang_sep=all_ang_sep, mag_K=all_mag_K)
         print "Save data complete!"
         
         #a = raw_input('Press any key to continue... ')

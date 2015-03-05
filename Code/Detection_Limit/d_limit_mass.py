@@ -223,7 +223,7 @@ def main():
                 fix_K_mass.append(m_k_array[0:][0][index])
             
 
-        
+        fix_K_m_array.append(fix_K_mass)
 
     '''
     # The following is code to find the corresponding mass values from the primary flux.
