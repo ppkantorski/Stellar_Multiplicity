@@ -23,7 +23,7 @@ import pdb
 
 
 def main():
-    var = 0; all_names=[]; all_ang_sep=[]; all_mag_K=[]
+    var = 0; all_names=[]; all_ang_sep=[]; all_mag_K=[]; all_max_flux=[]
     
     select = raw_input("Compute Detection Limit for (1|2|3|4|5|6)? : ")
     stay = True
@@ -128,35 +128,12 @@ def main():
         #print "Image STD:", STD_image
         #print image[np.where(3*STD_image > image)]
         
-
-
-        # This code removes values from the picture above 3*STD.
-        width = 40
         
-        STD_array = np.array([])
-        for i in np.arange(0, len(image[:, 1])-1, width):
-            for j in np.arange(0, len(image[:, 0])-1, width):
-                STD_image = np.nanstd(image[j-width/2:j+width/2, i-width/2:i+width/2])
-                
-                #if (i < 120 or i > 190) & (j < 120 or j >190):
-                for m in np.arange(i-width/2, i+width/2 - 1):
-                    for n in np.arange(j-width/2, j+width/2 - 1):
-                        
-                        if 3*STD_image < image[n, m]:
-                            image[n, m] = 'nan'
-        #######################################################
-                
-                
-        
-        print '\nSaving fixed masked fits file...'
-        write_path = '/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/'+cluster+'/STD_fixed_'+name+'_'+current_img+'.fits'
-        fits.writeto(write_path, image, clobber=True)
-        print 'Masked fits file was properly saved!\n'
         # Open DS9...
-        p = subprocess.Popen(["/Applications/ds9.darwinmountainlion.7.2/ds9", '-log', '-zoom', 'to', '4', '-cmap', 'b', path])
-        p_2 = subprocess.Popen(["/Applications/ds9.darwinmountainlion.7.2/ds9", '-log', '-zoom', 'to', '4', '-cmap', 'b', write_path])
+        #p = subprocess.Popen(["/Applications/ds9.darwinmountainlion.7.2/ds9", '-log', '-zoom', 'to', '4', '-cmap', 'b', path])
+        #p_2 = subprocess.Popen(["/Applications/ds9.darwinmountainlion.7.2/ds9", '-log', '-zoom', 'to', '4', '-cmap', 'b', write_path])
         
-        a = raw_input('Press Enter to continue... ')
+        #a = raw_input('Press Enter to continue... ')
         
         ### Enter primary star's information... ###
         print("\nPrimary Star Information: ")
@@ -182,7 +159,7 @@ def main():
     
     
         ### Detection Limit Calculations ###
-        ang_sep_array = []; flux_array = []
+        ang_sep_array = []; flux_array = []; circle_array = []
         for j in range(100, len(image[0])-100, 1):
             for i in range(100, len(image[1])-100, 1):
                 x_position = i
@@ -192,33 +169,54 @@ def main():
                 ang_sep_array.append(position_check(x_cent_1, y_cent_1, x_position, y_position)[0])
         
         #plt.plot(ang_sep_array, flux_array, '.')
-        plt.xlabel('Angular Seperation', fontsize='18')
-        plt.ylabel('Mag_K', fontsize='18')
-        plt.xscale('log')
-        plt.gca().invert_yaxis()
+        #plt.xlabel('Angular Seperation', fontsize='18')
+        #plt.ylabel('Mag_K', fontsize='18')
+        #plt.xscale('log')
+        #plt.gca().invert_yaxis()
         #plt.show()
+        
+        
+        
         
         N = 100 # total number of pixels in 5 arcsec radius.
         
         ang_sep_array = np.asarray(ang_sep_array)
         fix_ang_sep_array = np.round(ang_sep_array/.0495) * .0495 # Rounding to nearest pixel.
-        fix_flux_array = flux_array 
+        fix_flux_array = flux_array
         
         
         #plt.plot(fix_ang_sep_array, fix_flux_array, '.')
-        plt.xlabel('Angular Seperation', fontsize='18')
-        plt.ylabel('Mag_K', fontsize='18')
-        plt.xscale('log')
-        plt.gca().invert_yaxis()
+        #plt.xlabel('Angular Seperation', fontsize='18')
+        #plt.ylabel('Mag_K', fontsize='18')
+        #plt.xscale('log')
+        #plt.gca().invert_yaxis()
         #plt.show()
         
         
-        final_sep_array = list(set(fix_ang_sep_array))  # Removes degenerate values.
+        sorted_data = np.array(sorted(np.column_stack((fix_ang_sep_array, fix_flux_array)), key=lambda row: row[0]))
+        sorted_x = []; sorted_y = []
+        for i in range(len(sorted_data)):
+            sorted_x.append(sorted_data[i][0])
+            sorted_y.append(sorted_data[i][1])
+        fix_ang_sep_array = sorted_x
+        fix_flux_array = sorted_y
+        
+        
+        final_sep_array = list(set(fix_ang_sep_array)) # Removes degenerate values.
         final_flux_array = []; sort_flux_array = []
+
         for i in range(len(final_sep_array)):
             for j in range(len(fix_ang_sep_array)):
                 if final_sep_array[i] == fix_ang_sep_array[j]:
                     final_flux_array.append(fix_flux_array[j])
+            
+            if final_sep_array[i] > 1:
+                for m in range(len(final_flux_array)):
+                    if 3* np.nanstd(final_flux_array) < final_flux_array[m]:
+                        #print 'Bad Pixel Value:', final_flux_array[m]
+                        #print 'Seperation:', final_sep_array[i]
+                        final_flux_array[m] = np.nan
+                        #print final_flux_array[m]
             
             sort_flux_array.append(np.nanstd(final_flux_array) * 5.)
             final_flux_array = []
@@ -242,15 +240,16 @@ def main():
         all_names.append(name)
         all_ang_sep.append(sorted_x)
         all_mag_K.append(sorted_y)
+        all_max_flux.append(max_flux_1)
         
         print all_names
         print "\nSaving data for Star #"+str(var+1)+"..."
         np.savez('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Recalculations/'+cluster+'_bin_data',
-        star_name = all_names, ang_sep=all_ang_sep, mag_K=all_mag_K)
+        star_name = all_names, ang_sep=all_ang_sep, mag_K=all_mag_K, max_flux=all_max_flux)
         print "Save data complete!"
         
         #a = raw_input('Press any key to continue... ')
-        p.terminate()
+        #p.terminate()
         var = var + 1
     
     
@@ -324,7 +323,16 @@ def flux_ratio(flux_1,flux_2):
     #print('\n')
     
     return ratio
-    
+
+
+def find_and_replace(array, find, replace):
+    sort_idx = np.argsort(array)
+    where_ = np.take(sort_idx, 
+                     np.searchsorted(array, find, sorter=sort_idx))
+    if not np.all(array[where_] == find):
+        raise ValueError('All items in find must be in array')
+    array[where_] = replace
+
 
 if __name__ == '__main__':
 	main()

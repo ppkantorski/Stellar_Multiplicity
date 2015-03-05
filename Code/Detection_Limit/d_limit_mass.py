@@ -110,6 +110,8 @@ def main():
     star_name = data['star_name']
     ang_sep = data['ang_sep']
     mag_K = data['mag_K']
+    max_flux = data['max_flux']
+    print max_flux.shape
     
     #######################################################################
 
@@ -198,7 +200,7 @@ def main():
     #######################################
     
 
-    # The following is code to find the corresponding mass values from Mag J, H, & K.
+    # The following is code to find the corresponding mass values from mag_K.
     K_mass = []; K_m_array = []
     NG_K_mass = []; NG_K_array = []
     D_K_mass = []; D_K_array = []
@@ -220,13 +222,40 @@ def main():
             if K_mass[j] > M_cutoff:
                 fix_K_mass.append(m_k_array[0:][0][index])
             
-            #print len(K_mass)
+
+        
+
+    '''
+    # The following is code to find the corresponding mass values from the primary flux.
+    K_mass = []; K_m_array = []
+    NG_K_mass = []; NG_K_array = []
+    D_K_mass = []; D_K_array = []
+    
+    fix_max_mass = []; fix_max_m_array = []; M_cutoff = 0.5
+    for i in range(0, len(max_flux)):
+        K_mass = []; NG_K_mass = []; D_K_mass = []; fix_K_mass = [];
+        
+        index = find_nearest(m_k_array[1:][0], max_flux[i])[0]
+        K_mass = m_k_array[0:][0][index]
+        NG_index = find_nearest(NG_m_k_array[1:][0], max_flux[i])[0]
+        NG_K_mass = NG_m_k_array[0:][0][NG_index]
+        D_index = find_nearest(D_m_k_array[1:][0], max_flux[i])[0]
+        D_K_mass = D_m_k_array[0:][0][D_index]
+        
+        if K_mass <= M_cutoff:
+            fix_max_mass.append(NG_m_k_array[0:][0][NG_index])
+        if K_mass > M_cutoff:
+            fix_max_mass.append(m_k_array[0:][0][index])
             
+        #print len(K_mass)
+        
         K_m_array.append(K_mass)
         NG_K_array.append(NG_K_mass)
         D_K_array.append(D_K_mass)
         
-        fix_K_m_array.append(fix_K_mass)
+        fix_max_m_array.append(fix_max_mass)
+    print 'len max_mass:', len(fix_max_m_array)
+    '''
     
     '''
     fix_K_mass = []

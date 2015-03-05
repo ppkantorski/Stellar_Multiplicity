@@ -18,36 +18,70 @@ import sys
 choice = raw_input("\nEnter specified cluster: ")
 if choice == '1':
     cluster = "IC_2391"
+    start = 0
+    stop = 13 + 1
+    s_start = 0
+    s_stop = 19 + 1
+    
     lower_x = .9
     upper_x = 1.1
     lower_y = 5.2
     upper_y = 5.7
+
 if choice == '2':
     cluster = "NGC_6475"
+    start = 14
+    stop = 23 + 1
+    s_start = 20
+    s_stop = 22 + 1
+    
     lower_x = 1
     upper_x = 2
     lower_y = 3
     upper_y = 4
+    
 if choice == '3':
     cluster = "NGC_2451"
+    start = 24
+    stop = 49 + 1
+    s_start = 23
+    s_stop = 50 + 1
+    
     lower_x = 1.4
     upper_x = 1.5
     lower_y = 6
     upper_y = 7
+    
 if choice == '4':
     cluster = "NGC_2516"
+    start = 0
+    stop = 0
+    s_start = 51
+    s_stop = 74 + 1
+    
     lower_x = 1.2
     upper_x = 1.5
     lower_y = 5
     upper_y = 6
+    
 if choice == '5':
     cluster = "NGC_3532"
+    start = 52
+    stop = 67 + 1
+    s_start = 75
+    s_stop = 91 + 1
+    
     lower_x = 1.3
     upper_x = 1.5
     lower_y = 5
     upper_y = 6
 if choice == '6':
     cluster = "IC_2602"
+    start = 68
+    stop = 107 + 1
+    s_start = 92
+    s_stop = 114 + 1
+    
     lower_x = 1.2
     upper_x = 1.4
     lower_y = 5
@@ -67,11 +101,13 @@ ang_sep = data['ang_sep']
 mag_K = data['mag_K']
 K_mass = data['K_mass']
 
+max_mass = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/primary_mass.txt')[0::2]
+
 #print 'mag_K length/shape:', len(mag_K), mag_K.shape
 #print 'K_mass length/shape:', len(K_mass), K_mass.shape
 
 
-i = 0; fixed_star_name = []; fixed_ang_sep = []; fixed_mag_K = []; fixed_K_mass = [];
+i = 0; fixed_star_name = []; fixed_ang_sep = []; fixed_mag_K = []; fixed_K_mass = []; fixed_max_mass = []
 while i < len(star_name) - 1:
     temp_name = star_name[i]
     temp_index = i
@@ -103,24 +139,27 @@ while i < len(star_name) - 1:
         fixed_ang_sep.append(ang_sep[temp_index])
         fixed_mag_K.append(mag_K[temp_index])
         fixed_K_mass.append(K_mass[temp_index])
+        fixed_max_mass.append(max_mass[temp_index])
     if median_2 > median_1 and median_2 > median_3:
         print str(star_name[temp_index])+": Image 2 is best."
         fixed_star_name.append(star_name[temp_index])
         fixed_ang_sep.append(ang_sep[temp_index+1])
         fixed_mag_K.append(mag_K[temp_index+1])
         fixed_K_mass.append(K_mass[temp_index+1])
+        fixed_max_mass.append(max_mass[temp_index+1])
     if median_3 > median_1 and median_3 > median_2:
         print str(star_name[temp_index])+": Image 3 is best."
         fixed_star_name.append(star_name[temp_index])
         fixed_ang_sep.append(ang_sep[temp_index+2])
         fixed_mag_K.append(mag_K[temp_index+2])
         fixed_K_mass.append(K_mass[temp_index+2])
+        fixed_max_mass.append(max_mass[temp_index+2])
     #a = raw_input("Break function or next star? :")
     
     print i
     print "\nSaving sorted/fixed data..."
     np.savez('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Recalculations/fixed_'+cluster+'_data',
-    star_name = fixed_star_name, ang_sep=fixed_ang_sep, mag_K=fixed_mag_K, K_mass=fixed_K_mass)
+    star_name = fixed_star_name, ang_sep=fixed_ang_sep, mag_K=fixed_mag_K, K_mass=fixed_K_mass, max_mass=fixed_max_mass)
     print "Save data complete!\n"
 
 
@@ -130,6 +169,8 @@ star_name = data['star_name']
 ang_sep = data['ang_sep']
 mag_K = data['mag_K']
 K_mass = data['K_mass']
+max_mass = data['max_mass']
+
 
 #print 'mag_K length/shape:', len(mag_K[0]), mag_K.shape
 #print 'K_mass length/shape:', len(K_mass[0]), K_mass.shape
@@ -160,11 +201,14 @@ plt.figure(2)
 print "Plotting mass data for Cluster "+cluster+"..."
 plt.title("Detection Limit for Binaries in "+cluster, fontsize='20')
 plt.xlabel("Angular Seperation", fontsize='16')
-plt.ylabel("K Mass", fontsize='16')
+plt.ylabel("Mass Ratio", fontsize='16')
 plt.xscale('log')
-plt.gca().invert_yaxis()
+#plt.gca().invert_yaxis()
+
+print 'K_mass', K_mass
+print 'max_mass', max_mass
 for i in range(len(ang_sep)):
-    plt.plot(ang_sep[i], K_mass[i], 'o', color='0.3')
+    plt.plot(ang_sep[i], K_mass[i], 'o', color='0.3') #/max_mass[i]
 
 print "Saving figure..."
 plt.savefig('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Recalculations/'+cluster+'_mass_K.png')    

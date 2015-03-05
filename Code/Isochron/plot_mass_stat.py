@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+# This program is the main program for returning cluster specific mass values.
+# This is to be ran before running 'sort_isochrone.py'
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import interpolate
@@ -112,9 +115,9 @@ def main():
             #H_cross = 5.00
             #K_cross = 5.10
             start = 68
-            stop = 107 + 1
+            stop = 107 #+ 1
             s_start = 90
-            s_stop = 112 + 1
+            s_stop = 112 #+ 1
             stay = False
             break
         else:
@@ -150,50 +153,75 @@ def main():
     s_K_final = mass_data['s_K']
     '''
     
-    
-    # Code for applying the upper and lower error propogation.
-    blanket = 0.01  # Should be 0.01 (happens to be the same for both).
-    sign = 1  # Should be either +1 or -1.
-    b_J = []
-    for n in range(len(b_absJ)):
-        odd = 2*n
-        even = 2*n + 1
-        if odd > len(b_absJ)-1:
-            break
-        if even > len(b_absJ)-1:
-            break
-        b_J.append(b_absJ[odd]+ sign*blanket) #Primary Stars
-        b_J.append(b_absJ[even] + sign*(blanket**2 + b_DelJ[even]**2)**(0.5) ) #Companion Stars
-    b_absJ = b_J
-    
-    b_H = []
-    for n in range(len(b_absH)):
-        odd = 2*n
-        even = 2*n + 1
-        if odd > len(b_absH)-1:
-            break
-        if even > len(b_absH)-1:
-            break
-        b_H.append(b_absH[odd]+ sign*blanket) #Primary Stars
-        b_H.append(b_absH[even] + sign*(blanket**2 + b_DelH[even]**2)**(0.5) ) #Companion Stars
-    b_absH = b_H
-    
-    b_K = []
-    for n in range(len(b_absK)):
-        odd = 2*n
-        even = 2*n + 1
-        if odd > len(b_absK)-1:
-            break
-        if even > len(b_absK)-1:
-            break
-        b_K.append(b_absK[odd]+ sign*blanket) #Primary Stars
-        b_K.append(b_absK[even] + sign*(blanket**2 + b_DelK[even]**2)**(0.5) ) #Companion Stars
-    b_absK = b_K
-    
-    s_absJ = s_absJ + sign*blanket
-    s_absH = s_absH + sign*blanket
-    s_absK = s_absK + sign*blanket
-    
+    print '\n'
+    stay_1 = True
+    while stay_1 == True:
+        prompt = raw_input('Apply upper/lower error prop.? (y|n): ')
+        if prompt == 'Y' or prompt == 'y':
+            stay = True
+            stay_1 = False
+        elif prompt == 'N' or prompt == 'n':
+            stay = False
+            stay_1 = False
+        else:
+            stay_1 = True
+
+    while stay == True:
+        # Code for applying the upper and lower error propogation.
+        blanket = 0.01  # Should be 0.01 (happens to be the same for both).
+        stay_1 = True
+        while stay_1 == True:
+            choice = str(raw_input('Upper or Lower Error Prop.? (1|2): '))
+            if choice == "1":
+                sign = -1
+                stay_1 = False
+            elif choice == "2":
+                sign = 1
+                stay_1 = False
+            else:
+                stay_1 = True
+            
+        b_J = []
+        for n in range(len(b_absJ)):
+            odd = 2*n
+            even = 2*n + 1
+            if odd > len(b_absJ)-1:
+                break
+            if even > len(b_absJ)-1:
+                break
+            b_J.append(b_absJ[odd]+ sign*blanket) #Primary Stars
+            b_J.append(b_absJ[even] + sign*(blanket**2 + b_DelJ[even]**2)**(0.5) ) #Companion Stars
+        b_absJ = b_J
+        
+        b_H = []
+        for n in range(len(b_absH)):
+            odd = 2*n
+            even = 2*n + 1
+            if odd > len(b_absH)-1:
+                break
+            if even > len(b_absH)-1:
+                break
+            b_H.append(b_absH[odd]+ sign*blanket) #Primary Stars
+            b_H.append(b_absH[even] + sign*(blanket**2 + b_DelH[even]**2)**(0.5) ) #Companion Stars
+        b_absH = b_H
+        
+        b_K = []
+        for n in range(len(b_absK)):
+            odd = 2*n
+            even = 2*n + 1
+            if odd > len(b_absK)-1:
+                break
+            if even > len(b_absK)-1:
+                break
+            b_K.append(b_absK[odd]+ sign*blanket) #Primary Stars
+            b_K.append(b_absK[even] + sign*(blanket**2 + b_DelK[even]**2)**(0.5) ) #Companion Stars
+        b_absK = b_K
+        
+        s_absJ = s_absJ + sign*blanket
+        s_absH = s_absH + sign*blanket
+        s_absK = s_absK + sign*blanket
+        
+        stay = False
     
     
     ### Code for  Mass vs Mag J, H, & K. ###
@@ -801,6 +829,18 @@ def main():
     P_J = poisson_J, P_H = poisson_H, P_K = poisson_K, Comp_Names = comp_names)
     print "Save data complete!"
     '''
+    
+    # Run 'sort_isochron.py' after.
+    print("\n=====================================================================")
+    again = raw_input("Run sort_isochron.py to sort/print data? (y/n): ")
+    while again != 'y' and again != 'Y' and again != 'N' and again != 'n': 
+        again = raw_input("Please enter (y/n): ")
+    if again == 'Y' or again == 'y':
+        print("\n=====================================================================")
+        os.system("/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Isochron/sort_isochrone.py")
+    elif again == 'N' or again == 'n':
+        print '\n'
+        
     
     # Re-execute program.
     print("\n=====================================================================")
