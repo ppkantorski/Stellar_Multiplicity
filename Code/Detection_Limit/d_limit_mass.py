@@ -110,8 +110,8 @@ def main():
     star_name = data['star_name']
     ang_sep = data['ang_sep']
     mag_K = data['mag_K']
-    max_flux = data['max_flux']
-    print max_flux.shape
+    #max_flux = data['max_flux']
+    #print max_flux.shape
     
     #######################################################################
 
