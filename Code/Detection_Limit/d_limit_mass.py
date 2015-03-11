@@ -113,6 +113,57 @@ def main():
     #max_flux = data['max_flux']
     #print max_flux.shape
     
+    b_names = open('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/bin_names.txt', 'r').readlines()[start:stop][0::2]
+    b_absK = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/bin_AbsK.txt')[start:stop][0::2]
+    print 'b_name:', b_names
+    print 'b_absK:', b_absK
+    print star_name
+    
+    i = 0; j = 0;
+    while i < len(star_name):
+        print star_name[i], b_names[j], b_absK[j]
+        
+        try:
+            mag_K[i] = mag_K[i] + b_absK[j]
+            plt.plot(ang_sep[i], mag_K[i], '.', label= b_names[j])
+            if star_name[i] == star_name[i+1]:
+                mag_K[i+1] = mag_K[i+1] + b_absK[j]
+                i = i + 1
+                plt.plot(ang_sep[i], mag_K[i], '.')
+                print star_name[i], b_names[j], b_absK[j]
+                
+                if star_name[i] == star_name[i+1]:
+                    mag_K[i+1] = mag_K[i+1] + b_absK[j]
+                    i = i + 1
+                    plt.plot(ang_sep[i], mag_K[i], '.')
+                    print star_name[i], b_names[j], b_absK[j]
+
+            if b_names[j] == b_names[j+1]:
+                j = j + 1
+                if b_names[j] == b_names[j+1]:
+                    j = j + 1
+                    
+        except IndexError:
+            print 'End of list reached!'
+        
+        i = i + 1
+        j = j + 1
+        
+        #a = np.empty(len(mag_K[i])); a.fill(ang_sep[i])
+    
+    print 'ang_sep len:', len(ang_sep)
+    print 'mag_K len:', len(mag_K)
+    
+    #for i in range(len(mag_K)):
+    #    plt.plot(ang_sep[i], mag_K[i], '.')
+    plt.title('Delta K Plot for '+cluster, fontsize='22')                                                  
+    plt.xlabel('Angular Seperation', fontsize='18')                                           
+    plt.ylabel('Mag_K', fontsize='18')                                                        
+    plt.xscale('log')    
+    plt.gca().invert_yaxis()
+    #plt.legend()                  
+    plt.show()
+    
     #######################################################################
 
 

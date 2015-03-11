@@ -39,37 +39,31 @@ def main():
             cluster = "IC_2391"
             data = myfile.readlines()
             len_data = len(data)
-            cutoff = 1.3
     elif select == "2":
         with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/NGC_6475_masked.txt', "r") as myfile:
             cluster = "NGC_6475"
             data = myfile.readlines()
             len_data = len(data)
-            cutoff = 1.3
     elif select == "3":
         with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/NGC_2451_masked.txt', "r") as myfile:
             cluster = "NGC_2451"
             data = myfile.readlines()
             len_data = len(data)
-            cutoff = 1.3
     elif select == "4":
         with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/NGC_2516_masked.txt', "r") as myfile:
             cluster = "NGC_2516"
             data = myfile.readlines()
             len_data = len(data)
-            cutoff = 1.3
     elif select == "5":
         with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/NGC_3532_masked.txt', "r") as myfile:
             cluster = "NGC_3532"
             data = myfile.readlines()
             len_data = len(data)
-            cutoff = 1.3
     elif select == "6":
         with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/IC_2602_masked.txt', "r") as myfile:
             cluster = "IC_2602"
             data = myfile.readlines()
             len_data = len(data)
-            cutoff = 1.3
     print "Cluster:", cluster
     
     while var < len_data:
@@ -164,25 +158,25 @@ def main():
         print "Max flux for primary: ", max_flux_1
     
     
-        ### Detection Limit Calculations ###                                                                  # I might have to apply the 3xSTD
-        ang_sep_array = []; flux_array = []                                                                   # condition here instead of below.
-        for j in range(100, len(image[0])-100, 1):                                                            #
-            for i in range(100, len(image[1])-100, 1):                                                        #
-                x_position = i                                                                                #
-                y_position = j                                                                                #
-                max_flux_2 = image[j,i]                                                                       #
-                flux_array.append(max_flux_2)                                                                 #
-                ang_sep_array.append(position_check(x_cent_1, y_cent_1, x_position, y_position)[0])           #
-                                                                                                              #
-        #plt.plot(ang_sep_array, flux_array, '.')                                                             #
-        #plt.xlabel('Angular Seperation', fontsize='18')                                                      #
-        #plt.ylabel('Mag_K', fontsize='18')                                                                   #
-        #plt.xscale('log')                                                                                    #
-        #plt.gca().invert_yaxis()                                                                             #
-        #plt.show()                                                                                           #
-                                                                                                              #
-                                                                                                              #
-                                                                                                              #
+        ### Detection Limit Calculations ###                                                       
+        ang_sep_array = []; flux_array = []                                                        
+        for j in range(100, len(image[0])-100, 1):                                                 
+            for i in range(100, len(image[1])-100, 1):                                             
+                x_position = i                                                                     
+                y_position = j                                                                     
+                max_flux_2 = image[j,i]                                                            
+                flux_array.append(max_flux_2)                                                      
+                ang_sep_array.append(position_check(x_cent_1, y_cent_1, x_position, y_position)[0])
+                                                                                    
+        #plt.plot(ang_sep_array, flux_array, '.')                                                  
+        #plt.xlabel('Angular Seperation', fontsize='18')                                           
+        #plt.ylabel('Mag_K', fontsize='18')                                                        
+        #plt.xscale('log')                                                                         
+        #plt.gca().invert_yaxis()                                                                  
+        #plt.show()                                                                                
+                                                                                    
+                                                                                    
+                                                                                    
         
         N = 100 # total number of pixels in 5 arcsec radius.
         
@@ -191,12 +185,12 @@ def main():
         fix_flux_array = flux_array
         
         
-        plt.plot(fix_ang_sep_array, fix_flux_array, '.')
-        plt.xlabel('Angular Seperation', fontsize='18')
-        plt.ylabel('Mag_K', fontsize='18')
-        plt.xscale('log')
-        plt.gca().invert_yaxis()
-        plt.show()
+        #plt.plot(fix_ang_sep_array, fix_flux_array, '.')
+        #plt.xlabel('Angular Seperation', fontsize='18')
+        #plt.ylabel('Mag_K', fontsize='18')
+        #plt.xscale('log')
+        #plt.gca().invert_yaxis()
+        #plt.show()
         
         
         sorted_data = np.array(sorted(np.column_stack((fix_ang_sep_array, fix_flux_array)), key=lambda row: row[0]))
@@ -217,25 +211,28 @@ def main():
                 if final_sep_array[i] == fix_ang_sep_array[j]:
                     final_flux_array.append(fix_flux_array[j])
                     
-            if final_sep_array[i] > cutoff:
-                flux_std = np.nanstd(final_flux_array)
-                for m in range(len(final_flux_array)):
-                    if final_flux_array[m] > (3 * flux_std):
-                        #print 'Bad Pixel Value:', final_flux_array[m]
-                        #print 'Seperation:', final_sep_array[i]
-                        final_flux_array[m] = np.nan
-                        #print final_flux_array[m]
-                    #if 3* np.nanstd(final_flux_array) < final_flux_array[m]:
-                        #print 'Bad Pixel Value:', final_flux_array[m]
-                        #print 'Seperation:', final_sep_array[i]
-                    #    final_flux_array[m] = np.nan
-                        #print final_flux_array[m]
+            #if final_sep_array[i] > cutoff:
+            flux_std = np.nanstd(final_flux_array)
+            flux_med = np.median(final_flux_array)
+            for m in range(len(final_flux_array)):
+                if np.abs(final_flux_array[m]-flux_med) > (3 * flux_std):
+                    #print 'Bad Pixel Value:', final_flux_array[m]
+                    #print 'Seperation:', final_sep_array[i]
+                    final_flux_array[m] = np.nan
+                    #print final_flux_array[m]
+                #if 3* np.nanstd(final_flux_array) < final_flux_array[m]:
+                    #print 'Bad Pixel Value:', final_flux_array[m]
+                    #print 'Seperation:', final_sep_array[i]
+                #    final_flux_array[m] = np.nan
+                    #print final_flux_array[m]
             
-            if final_sep_array[i] > 2*cutoff:
-                flux_std = np.nanstd(final_flux_array)
-                for m in range(len(final_flux_array)):
-                    if final_flux_array[m] > (3 * flux_std):
-                        final_flux_array[m] = np.nan
+            flux_std = np.nanstd(final_flux_array)
+            flux_med = np.median(final_flux_array)
+            for m in range(len(final_flux_array)):
+                if np.abs(final_flux_array[m]-flux_med) > (3 * flux_std):
+                    #print 'Bad Pixel Value:', final_flux_array[m]
+                    #print 'Seperation:', final_sep_array[i]
+                    final_flux_array[m] = np.nan
             
             a = np.empty(len(final_flux_array)); a.fill(final_sep_array[i])
             plt.plot(a, final_flux_array, '.')
@@ -244,27 +241,27 @@ def main():
             final_flux_array = []
         
         
-        plt.xlabel('Angular Seperation', fontsize='18')
-        plt.ylabel('Mag_K', fontsize='18')
-        plt.xscale('log')
-        plt.gca().invert_yaxis()
-        plt.show()
-        
-        delta_K = flux_ratio(max_flux_1, sort_flux_array)
-        #delta_K = flux_ratio(max_flux_1, calc_array)
-        sorted_data = np.array(sorted(np.column_stack((final_sep_array, delta_K)), key=lambda row: row[0]))
-        sorted_x = []; sorted_y = []
-        for i in range(len(sorted_data)):
-            sorted_x.append(sorted_data[i][0])
-            sorted_y.append(sorted_data[i][1])
-        
-        #plt.clf()
-        plt.plot(sorted_x, sorted_y, color='k')
-        plt.xlabel('Angular Seperation', fontsize='18')
-        plt.ylabel('Delta K', fontsize='18')
-        plt.xscale('log')
-        plt.gca().invert_yaxis()
-        plt.show()                
+        #plt.xlabel('Angular Seperation', fontsize='18')
+        #plt.ylabel('Mag_K', fontsize='18')
+        #plt.xscale('log')
+        #plt.gca().invert_yaxis()
+        #plt.show()
+                                                                                                                #  Add AbsK values to Delta K!
+        delta_K = flux_ratio(max_flux_1, sort_flux_array)                                                       #
+        #delta_K = flux_ratio(max_flux_1, calc_array)                                                           #
+        sorted_data = np.array(sorted(np.column_stack((final_sep_array, delta_K)), key=lambda row: row[0]))     #
+        sorted_x = []; sorted_y = []                                                                            #
+        for i in range(len(sorted_data)):                                                                       #
+            sorted_x.append(sorted_data[i][0])                                                                  #
+            sorted_y.append(sorted_data[i][1])                                                                  #
+                                                                                                                #
+        #plt.clf()                                                                                              #
+        #plt.plot(sorted_x, sorted_y, color='k')                                                                #
+        #plt.xlabel('Angular Seperation', fontsize='18')
+        #plt.ylabel('Delta K', fontsize='18')
+        #plt.xscale('log')
+        #plt.gca().invert_yaxis()
+        #plt.show()                
         
         all_names.append(name)
         all_ang_sep.append(sorted_x)

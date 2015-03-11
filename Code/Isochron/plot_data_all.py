@@ -38,17 +38,17 @@ def main():
     # J_mag - K_mag vs. K_mag
     KJ = []
     for i in range(len(b_absK)):
-        if b_absJ[i] != 0:
+        if b_absJ[i] != -100:
             KJ.append(b_absJ[i] - b_absK[i])
-        if b_absJ[i] == 0:
+        if b_absJ[i] == -100:
             KJ.append(float('nan'))
     
     # H_mag - K_mag vs. K_mag
     KH = []
     for i in range(len(b_absK)):
-        if b_absH[i] != 0:
+        if b_absH[i] != -100:
             KH.append(b_absH[i] - b_absK[i])
-        if b_absH[i] == 0:
+        if b_absH[i] == -100:
             KH.append(float('nan'))
     
     sigma_J = b_DelJ[1::2]

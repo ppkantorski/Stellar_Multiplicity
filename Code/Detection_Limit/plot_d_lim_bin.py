@@ -207,7 +207,7 @@ final_mass = []
 print 'max_mass', max_mass[start:stop][0::2]; i = 0
 while i < len(max_mass[start:stop][0::2]):
     final_mass.append(max_mass[start:stop][0::2][i])
-    print final_mass
+    #print final_mass
     try:
         if max_mass[start:stop][0::2][i] == max_mass[start:stop][0::2][i+1]:
             i = i+1
@@ -217,12 +217,22 @@ while i < len(max_mass[start:stop][0::2]):
         a = 'blah'
     i = i + 1
 
+print 'Final Mass', final_mass
+
+print 'star name length:', len(star_name)
+print 'max mass length:', len(max_mass[start:stop][0::2])
+print 'star name:', star_name
+print 'max mass:', max_mass[start:stop][0::2]
 for i in range(len(ang_sep)):
-    print final_mass[i]
-    plt.plot(ang_sep[i], K_mass[i]/max_mass[start:stop][0::2][i], 'o', color='0.3') # I BELIEVE THAT THE FLAW IN MY CODE IS HERE../max_mass[start:stop][i]
+    plt.plot(ang_sep[i], K_mass[i]/final_mass[i], '-', label=star_name[i]) # I BELIEVE THAT THE FLAW IN MY CODE IS HERE../max_mass[start:stop][i]
+    for j in range(len(ang_sep[i])):
+        if (K_mass[i]/final_mass[i])[j] > 1.4:
+            print 'Bad Star!! :', star_name[i]
+            print 'Mass value:', max_mass[start:stop][0::2][i]
 
 print "Saving figure..."
-plt.savefig('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Recalculations/'+cluster+'_mass_K.png')    
+plt.legend()
+plt.savefig('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Recalculations/'+cluster+'_mass_K.png')
 plt.show()
 
 
