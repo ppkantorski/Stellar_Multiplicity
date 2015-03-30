@@ -25,6 +25,15 @@ import pdb
 def main():
     var = 0; all_names=[]; all_ang_sep=[]; all_mag_K=[]; all_max_flux=[]
     
+    
+    bs_choice = raw_input("Singles or Binaries (s|b)? : ")
+    stay = True
+    while stay == True:
+        if bs_choice != 's' and bs_choice != 'S' and bs_choice != 'b' and bs_choice != 'B':
+            bs_choice = raw_input("Please Enter (s|b): ")
+        else:
+            stay = False
+            
     select = raw_input("Compute Detection Limit for (1|2|3|4|5|6)? : ")
     stay = True
     while stay == True:
@@ -34,36 +43,70 @@ def main():
             stay = False
     
     # New file selection.
-    if select == "1":
-        with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/IC_2391_masked.txt', "r") as myfile:
-            cluster = "IC_2391"
-            data = myfile.readlines()
-            len_data = len(data)
-    elif select == "2":
-        with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/NGC_6475_masked.txt', "r") as myfile:
-            cluster = "NGC_6475"
-            data = myfile.readlines()
-            len_data = len(data)
-    elif select == "3":
-        with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/NGC_2451_masked.txt', "r") as myfile:
-            cluster = "NGC_2451"
-            data = myfile.readlines()
-            len_data = len(data)
-    elif select == "4":
-        with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/NGC_2516_masked.txt', "r") as myfile:
-            cluster = "NGC_2516"
-            data = myfile.readlines()
-            len_data = len(data)
-    elif select == "5":
-        with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/NGC_3532_masked.txt', "r") as myfile:
-            cluster = "NGC_3532"
-            data = myfile.readlines()
-            len_data = len(data)
-    elif select == "6":
-        with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/IC_2602_masked.txt', "r") as myfile:
-            cluster = "IC_2602"
-            data = myfile.readlines()
-            len_data = len(data)
+    if bs_choice == 's' or bs_choice == 'S':
+        if select == "1":
+            with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Singles/File_List/IC_2391_sin.txt', "r") as myfile:
+                cluster = "IC_2391"
+                data = myfile.readlines()
+                len_data = len(data)
+        elif select == "2":
+            with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Singles/File_List/NGC_6475_sin.txt', "r") as myfile:
+                cluster = "NGC_6475"
+                data = myfile.readlines()
+                len_data = len(data)
+        elif select == "3":
+            with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Singles/File_List/NGC_2451_sin.txt', "r") as myfile:
+                cluster = "NGC_2451"
+                data = myfile.readlines()
+                len_data = len(data)
+        elif select == "4":
+            with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Singles/File_List/NGC_2516_sin.txt', "r") as myfile:
+                cluster = "NGC_2516"
+                data = myfile.readlines()
+                len_data = len(data)
+        elif select == "5":
+            with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Singles/File_List/NGC_3532_sin.txt', "r") as myfile:
+                cluster = "NGC_3532"
+                data = myfile.readlines()
+                len_data = len(data)
+        elif select == "6":
+            with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Singles/File_List/IC_2602_sin.txt', "r") as myfile:
+                cluster = "IC_2602"
+                data = myfile.readlines()
+                len_data = len(data)
+    
+    if bs_choice == 'b' or bs_choice == 'B':
+        if select == "1":
+            with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/IC_2391_masked.txt', "r") as myfile:
+                cluster = "IC_2391"
+                data = myfile.readlines()
+                len_data = len(data)
+        elif select == "2":
+            with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/NGC_6475_masked.txt', "r") as myfile:
+                cluster = "NGC_6475"
+                data = myfile.readlines()
+                len_data = len(data)
+        elif select == "3":
+            with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/NGC_2451_masked.txt', "r") as myfile:
+                cluster = "NGC_2451"
+                data = myfile.readlines()
+                len_data = len(data)
+        elif select == "4":
+            with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/NGC_2516_masked.txt', "r") as myfile:
+                cluster = "NGC_2516"
+                data = myfile.readlines()
+                len_data = len(data)
+        elif select == "5":
+            with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/NGC_3532_masked.txt', "r") as myfile:
+                cluster = "NGC_3532"
+                data = myfile.readlines()
+                len_data = len(data)
+        elif select == "6":
+            with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Mask_Log/IC_2602_masked.txt', "r") as myfile:
+                cluster = "IC_2602"
+                data = myfile.readlines()
+                len_data = len(data)
+    
     print "Cluster:", cluster
     
     while var < len_data:
@@ -88,15 +131,26 @@ def main():
             print("File with Directory:")
             print(path+'\n')
             
-            current_img = 'img1'
-            name = (path.partition(cluster+'/')[2]).partition('_img1.fits')[0]
-            if ('_img2.fits' in name) == True:
-                current_img = 'img2'
-                name = (path.partition(cluster+'/')[2]).partition('_img2.fits')[0]                       
-            if ('_img3.fits' in name )== True:                                                           
-                current_img = 'img3'                                                                     
-                name = (path.partition(cluster+'/')[2]).partition('_img3.fits')[0]                       
-                                                                                                         
+            if bs_choice == 's' or bs_choice == 'S':
+                current_img = 'img1'
+                name = (path.partition('img1/')[2]).partition('_Kfinal.fits')[0]
+                if ('img2/' in path) == True:
+                    current_img = 'img2'
+                    name = (path.partition('img2/')[2]).partition('_Kfinal.fits')[0]                       
+                if ('img3/' in path )== True:                                                           
+                    current_img = 'img3'                                                                     
+                    name = (path.partition('img3/')[2]).partition('_Kfinal.fits')[0]
+
+            if bs_choice == 'b' or bs_choice == 'B':
+                current_img = 'img1'
+                name = (path.partition(cluster+'/')[2]).partition('_img1.fits')[0]
+                if ('_img2.fits' in name) == True:
+                    current_img = 'img2'
+                    name = (path.partition(cluster+'/')[2]).partition('_img2.fits')[0]                       
+                if ('_img3.fits' in name )== True:                                                           
+                    current_img = 'img3'                                                                     
+                    name = (path.partition(cluster+'/')[2]).partition('_img3.fits')[0]
+                
             print("Star #"+str(var+1)+":")                                                               
             print(name+'\n')                                                                             
                                                                                                          
@@ -146,15 +200,21 @@ def main():
         #print("Y Position #1: "+str(y_pos_1))
         #width_1 = 3
     
-        # Find centroid for primary...
-        x_cent_1 = np.load('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Centroid_Data/'+cluster+'_centroid_data.npz')['x_cent'][var]
-        y_cent_1 = np.load('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Centroid_Data/'+cluster+'_centroid_data.npz')['y_cent'][var]
-        #x_cent_1 = centroid(image, width_1, x_pos_1, y_pos_1)[0]
-        #y_cent_1 = centroid(image, width_1, x_pos_1, y_pos_1)[1]
-        print "\nCentroid of primary (x, y):", x_cent_1, y_cent_1
+        # Find centroid & max flux for primary...
+        if bs_choice == 'b' or bs_choice == 'B':
+            x_cent_1 = np.load('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Centroid_Data/'+cluster+'_centroid_data.npz')['x_cent'][var]
+            y_cent_1 = np.load('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Centroid_Data/'+cluster+'_centroid_data.npz')['y_cent'][var]
+            #x_cent_1 = centroid(image, width_1, x_pos_1, y_pos_1)[0]
+            #y_cent_1 = centroid(image, width_1, x_pos_1, y_pos_1)[1]
+            max_flux_1 = np.load('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Centroid_Data/'+cluster+'_centroid_data.npz')['max_flux'][var]
         
-        # Find max flux for primary...
-        max_flux_1 = np.load('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Centroid_Data/'+cluster+'_centroid_data.npz')['max_flux'][var]
+        if bs_choice == 's' or bs_choice == 'S':
+            x_cent_1 = np.load('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Singles/Centroid_Data/'+cluster+'_centroid_data.npz')['x_cent'][var]
+            y_cent_1 = np.load('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Singles/Centroid_Data/'+cluster+'_centroid_data.npz')['y_cent'][var]
+            max_flux_1 = np.load('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Singles/Centroid_Data/'+cluster+'_centroid_data.npz')['max_flux'][var]
+        
+        print "\nCentroid of primary (x, y):", x_cent_1, y_cent_1
+
         print "Max flux for primary: ", max_flux_1
     
     
@@ -255,8 +315,8 @@ def main():
             sorted_x.append(sorted_data[i][0])                                                                  #
             sorted_y.append(sorted_data[i][1])                                                                  #
                                                                                                                 #
-        #plt.clf()                                                                                              #
-        #plt.plot(sorted_x, sorted_y, color='k')                                                                #
+        #plt.clf()
+        #plt.plot(sorted_x, sorted_y, color='k')
         #plt.xlabel('Angular Seperation', fontsize='18')
         #plt.ylabel('Delta K', fontsize='18')
         #plt.xscale('log')
@@ -268,10 +328,18 @@ def main():
         all_mag_K.append(sorted_y)
         
         print all_names
-        print "\nSaving data for Star #"+str(var+1)+"..."
-        np.savez('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Recalculations/'+cluster+'_bin_data',
-        star_name = all_names, ang_sep=all_ang_sep, mag_K=all_mag_K)
-        print "Save data complete!"
+        
+        if bs_choice == 'b' or bs_choice == 'B':
+            print "\nSaving data for Binary Star #"+str(var+1)+"..."
+            np.savez('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Recalculations/'+cluster+'_bin_data',
+            star_name = all_names, ang_sep=all_ang_sep, mag_K=all_mag_K)
+            print "Save data complete!"
+        
+        if bs_choice == 's' or bs_choice == 'S':
+            print "\nSaving data for single Star #"+str(var+1)+"..."
+            np.savez('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Singles/Recalculations/'+cluster+'_sin_data',
+            star_name = all_names, ang_sep=all_ang_sep, mag_K=all_mag_K)
+            print "Save data complete!"
         
         #a = raw_input('Press any key to continue... ')
         #p.terminate()

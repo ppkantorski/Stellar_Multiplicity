@@ -24,7 +24,21 @@ import pdb
 def main():
     print("===========================================================================================\n")
 
-    select = raw_input("\nEnter which dataset to use: ")
+    bs_choice = raw_input("Singles or Binaries (s|b)? : ")
+    stay = True
+    while stay == True:
+        if bs_choice != 's' and bs_choice != 'S' and bs_choice != 'b' and bs_choice != 'B':
+            bs_choice = raw_input("Please Enter (s|b): ")
+        else:
+            stay = False
+            
+    select = raw_input("Compute centroids for (1|2|3|4|5|6)? : ")
+    stay = True
+    while stay == True:
+        if select != '1' and select != '2' and select != '3' and select != '4' and select != '5' and select != '6':
+            select = raw_input("Please Enter Options (1|2|3|4|5|6): ")
+        else:
+            stay = False
 
     # Defining arrays to store arrays for saving...
     all_names = []; all_ang_sep = []; all_mag_K = []; x_centroids = []; y_centroids = []; max_flux_array = []
@@ -35,58 +49,97 @@ def main():
     var = 0
     while loop <= 1:
         # New file selection.
-        if select == "1":
-            with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/IC_2391_bin.txt', "r") as myfile:
-                cluster = "IC_2391"
-                data = myfile.readlines()
-                len_data = len(data)
-                triple_index = np.array([np.nan])
-                quad_index = np.array([np.nan])
-        elif select == "2":
-            with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/NGC_6475_bin.txt', "r") as myfile:
-                cluster = "NGC_6475"
-                data = myfile.readlines()
-                len_data = len(data)
-                triple_index = np.array([0, 1, 2, 6, 7, 8])
-                quad_index = np.array([np.nan])
-        elif select == "3":
-            with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/NGC_2451_bin.txt', "r") as myfile:
-                cluster = "NGC_2451"
-                data = myfile.readlines()
-                len_data = len(data)
-                triple_index = np.array([3, 4, 5, 30, 31, 32])
-                quad_index = np.array([np.nan])
-        elif select == "4":
-            with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/NGC_2516_bin.txt', "r") as myfile:
-                print "\nNote: NGC 2516 does not contain any binaries...\n"
-                sys.exit()
-                cluster = "NGC_2516"
-                data = myfile.readlines()
-                len_data = len(data)
-                triple_index = np.array([np.nan])
-                quad_index = np.array([np.nan])
-        elif select == "5":
-            with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/NGC_3532_bin.txt', "r") as myfile:
-                cluster = "NGC_3532"
-                data = myfile.readlines()
-                len_data = len(data)
-                triple_index = np.array([9, 10, 11, 15, 16, 17])
-                quad_index = np.array([np.nan])
-        elif select == "6":
-            with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/IC_2602_bin.txt', "r") as myfile:
-                cluster = "IC_2602"
-                data = myfile.readlines()
-                len_data = len(data)
-                triple_index = np.array([6, 7, 8])
-                quad_index = np.array([36, 37, 38, 39, 40, 41])
-                
+        if bs_choice == 's' or bs_choice == 'S':
+            if select == "1":
+                with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/IC_2391_sin.txt', "r") as myfile:
+                    cluster = "IC_2391"
+                    data = myfile.readlines()
+                    len_data = len(data)
+            elif select == "2":
+                with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/NGC_6475_sin.txt', "r") as myfile:
+                    cluster = "NGC_6475"
+                    data = myfile.readlines()
+                    len_data = len(data)
+            elif select == "3":
+                with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/NGC_2451_sin.txt', "r") as myfile:
+                    cluster = "NGC_2451"
+                    data = myfile.readlines()
+                    len_data = len(data)
+            elif select == "4":
+                with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/NGC_2516_sin.txt', "r") as myfile:
+                    cluster = "NGC_2516"
+                    data = myfile.readlines()
+                    len_data = len(data)
+            elif select == "5":
+                with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/NGC_3532_sin.txt', "r") as myfile:
+                    cluster = "NGC_3532"
+                    data = myfile.readlines()
+                    len_data = len(data)
+            elif select == "6":
+                with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/IC_2602_sin.txt', "r") as myfile:
+                    cluster = "IC_2602"
+                    data = myfile.readlines()
+                    len_data = len(data)
+            # Initialized to provide dummy data.
+            triple_index = np.array([np.nan])
+            quad_index = np.array([np.nan])
+            
+            
+        if bs_choice == 'b' or bs_choice == 'B':
+            if select == "1":
+                with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/IC_2391_bin.txt', "r") as myfile:
+                    cluster = "IC_2391"
+                    data = myfile.readlines()
+                    len_data = len(data)
+                    triple_index = np.array([np.nan])
+                    quad_index = np.array([np.nan])
+            elif select == "2":
+                with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/NGC_6475_bin.txt', "r") as myfile:
+                    cluster = "NGC_6475"
+                    data = myfile.readlines()
+                    len_data = len(data)
+                    triple_index = np.array([0, 1, 2, 6, 7, 8])
+                    quad_index = np.array([np.nan])
+            elif select == "3":
+                with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/NGC_2451_bin.txt', "r") as myfile:
+                    cluster = "NGC_2451"
+                    data = myfile.readlines()
+                    len_data = len(data)
+                    triple_index = np.array([3, 4, 5, 30, 31, 32])
+                    quad_index = np.array([np.nan])
+            elif select == "4":
+                with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/NGC_2516_bin.txt', "r") as myfile:
+                    print "\nNote: NGC 2516 does not contain any binaries...\n"
+                    sys.exit()
+                    cluster = "NGC_2516"
+                    data = myfile.readlines()
+                    len_data = len(data)
+                    triple_index = np.array([np.nan])
+                    quad_index = np.array([np.nan])
+            elif select == "5":
+                with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/NGC_3532_bin.txt', "r") as myfile:
+                    cluster = "NGC_3532"
+                    data = myfile.readlines()
+                    len_data = len(data)
+                    triple_index = np.array([9, 10, 11, 15, 16, 17])
+                    quad_index = np.array([np.nan])
+            elif select == "6":
+                with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/IC_2602_bin.txt', "r") as myfile:
+                    cluster = "IC_2602"
+                    data = myfile.readlines()
+                    len_data = len(data)
+                    triple_index = np.array([6, 7, 8])
+                    quad_index = np.array([36, 37, 38, 39, 40, 41])
+            else:
+                len_data = var + 1
+        
         print "\nCluster:", cluster
         
-        bin_sep_array = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/'+cluster+'_bin_sep.txt')[0::2]
-        bin_PA_array = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/'+cluster+'_bin_PA.txt')[0::2]
+        if bs_choice == 'b' or bs_choice == 'B':
+            bin_sep_array = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/'+cluster+'_bin_sep.txt')[0::2]
+            bin_PA_array = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/'+cluster+'_bin_PA.txt')[0::2]
             
-        else:
-            len_data = var + 1
+
             
         while var < len_data:
             print("\n===========================================================================================\n")
@@ -168,10 +221,11 @@ def main():
             image = np.copy(file[0].data)
             
             # This index is used for the PA and Sep Arrays.
-            PA_sep_index = np.around((var+triple_counter+quad_counter)/3) # returns 0, 0, 0, 1, 1, 1, 2, 2, 2, ...
-            print "Triple Counter:", triple_counter
-            print "Quad Counter:", quad_counter
-            print "PA_sep_index:", PA_sep_index
+            if bs_choice == 'b' or bs_choice == 'B':
+                PA_sep_index = np.around((var+triple_counter+quad_counter)/3) # returns 0, 0, 0, 1, 1, 1, 2, 2, 2, ...
+                print "Triple Counter:", triple_counter
+                print "Quad Counter:", quad_counter
+                print "PA_sep_index:", PA_sep_index
             
             '''
             # Write test image for viewing...
@@ -211,10 +265,18 @@ def main():
 
                 
                 x_centroids.append(x_cent_1); y_centroids.append(y_cent_1); max_flux_array.append(max_flux_1); all_names.append(name)
-                np.savez('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Centroid_Data/'+cluster+'_centroid_data',
-                star_name = all_names, x_cent=x_centroids, y_cent=y_centroids, max_flux=max_flux_array)
                 
-                    
+                if bs_choice == 'b' or bs_choice == 'B':
+                    print "\nSaving data for Binary Star #"+str(var+1)+"..."
+                    np.savez('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Centroid_Data/'+cluster+'_centroid_data',
+                    star_name = all_names, x_cent=x_centroids, y_cent=y_centroids, max_flux=max_flux_array)
+                    print "Save data complete!"
+                
+                if bs_choice == 's' or bs_choice == 'S':
+                    print "\nSaving data for Single Star #"+str(var+1)+"..."
+                    np.savez('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Singles/Centroid_Data/'+cluster+'_centroid_data',
+                    star_name = all_names, x_cent=x_centroids, y_cent=y_centroids, max_flux=max_flux_array)
+                    print "Save data complete!"
                 
                 #########################################################################
 
@@ -226,7 +288,8 @@ def main():
                 ### Checks to see if data verification is complete. ###
 
                 while finish == 1:
-                    x = raw_input("\nNext Star? (y/n): ")
+                    #x = raw_input("\nNext Star? (y/n): ")
+                    x = 'y'
                     if x != 'y' and x != 'Y' and x != 'n' and x != 'N':
                         a = True
                         while a == True:

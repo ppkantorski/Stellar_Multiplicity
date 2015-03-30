@@ -17,6 +17,15 @@ def main():
     luminosity = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Isochron/Isochron_Data/main/luminosity.txt')
     
     
+    bs_choice = raw_input("Singles or Binaries (s|b)? : ")
+    stay = True
+    while stay == True:
+        if bs_choice != 's' and bs_choice != 'S' and bs_choice != 'b' and bs_choice != 'B':
+            bs_choice = raw_input("Please Enter (s|b): ")
+        else:
+            stay = False
+    
+    
     M_cutoff = 0.5
     
     stay = True
@@ -105,51 +114,90 @@ def main():
 
 
     # This section was added to load the recalculated detection limit data.
-
-    data = np.load('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Recalculations/'+cluster+'_bin_data.npz')
+    if bs_choice == 's' or bs_choice == 'S':
+        data = np.load('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Singles/Recalculations/'+cluster+'_sin_data.npz')
+        names = open('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Singles/sin_names.txt', 'r').readlines()[s_start:s_stop]
+        absK = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Singles/sin_AbsK.txt')[s_start:s_stop]
+        
+    if bs_choice == 'b' or bs_choice == 'B':
+        data = np.load('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Recalculations/'+cluster+'_bin_data.npz')
+        names = open('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/bin_names.txt', 'r').readlines()[start:stop][0::2]
+        absK = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/bin_AbsK.txt')[start:stop][0::2]
+    
     star_name = data['star_name']
     ang_sep = data['ang_sep']
     mag_K = data['mag_K']
     #max_flux = data['max_flux']
     #print max_flux.shape
     
-    b_names = open('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/bin_names.txt', 'r').readlines()[start:stop][0::2]
-    b_absK = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/bin_AbsK.txt')[start:stop][0::2]
-    print 'b_name:', b_names
-    print 'b_absK:', b_absK
+
+    #print 'name:', names
+    #print 'absK:', absK
     print star_name
     
-    i = 0; j = 0;
-    while i < len(star_name):
-        print star_name[i], b_names[j], b_absK[j]
-        
-        try:
-            mag_K[i] = mag_K[i] + b_absK[j]
-            plt.plot(ang_sep[i], mag_K[i], '.', label= b_names[j])
-            if star_name[i] == star_name[i+1]:
-                mag_K[i+1] = mag_K[i+1] + b_absK[j]
-                i = i + 1
-                plt.plot(ang_sep[i], mag_K[i], '.')
-                print star_name[i], b_names[j], b_absK[j]
-                
+    
+    if bs_choice == 's' or bs_choice == 'S':
+        i = 0; j = 0;
+        while i < len(star_name):
+            try:
+                print 'i:', i, 'j:', j
+                print star_name[i], names[j], absK[j]
+                mag_K[i] = mag_K[i] + absK[j]
+                plt.plot(ang_sep[i], mag_K[i], '-', label= names[j])
                 if star_name[i] == star_name[i+1]:
-                    mag_K[i+1] = mag_K[i+1] + b_absK[j]
+                    mag_K[i+1] = mag_K[i+1] + absK[j]
+                    i = i + 1
+                    plt.plot(ang_sep[i], mag_K[i], '-')
+                    print star_name[i], names[j], absK[j]
+                    
+                    if star_name[i] == star_name[i+1]:
+                        mag_K[i+1] = mag_K[i+1] + absK[j]
+                        i = i + 1
+                        plt.plot(ang_sep[i], mag_K[i], '-')
+                        print star_name[i], names[j], absK[j]
+        
+                        
+            except IndexError:
+                print 'Index:', i
+                print 'length:', len(star_name)
+                print 'End of list reached!'
+            
+            i = i + 1
+            j = j + 1
+    
+    
+    if bs_choice == 'b' or bs_choice == 'B':
+        i = 0; j = 0;
+        while i < len(star_name):        
+            try:
+                print star_name[i], names[j], absK[j]
+                mag_K[i] = mag_K[i] + absK[j]
+                plt.plot(ang_sep[i], mag_K[i], '-', label= names[j])
+                if star_name[i] == star_name[i+1]:
+                    mag_K[i+1] = mag_K[i+1] + absK[j]
                     i = i + 1
                     plt.plot(ang_sep[i], mag_K[i], '.')
-                    print star_name[i], b_names[j], b_absK[j]
-
-            if b_names[j] == b_names[j+1]:
-                j = j + 1
-                if b_names[j] == b_names[j+1]:
-                    j = j + 1
+                    print star_name[i], names[j], absK[j]
                     
-        except IndexError:
-            print 'End of list reached!'
+                    if star_name[i] == star_name[i+1]:
+                        mag_K[i+1] = mag_K[i+1] + absK[j]
+                        i = i + 1
+                        plt.plot(ang_sep[i], mag_K[i], '.')
+                        print star_name[i], names[j], absK[j]
         
-        i = i + 1
-        j = j + 1
-        
-        #a = np.empty(len(mag_K[i])); a.fill(ang_sep[i])
+                if names[j] == names[j+1]:
+                    j = j + 1
+                    if names[j] == names[j+1]:
+                        j = j + 1
+                        
+            except IndexError:
+                print 'length:', len(star_name)
+                print 'End of list reached!'
+            
+            i = i + 1
+            j = j + 1
+            
+            #a = np.empty(len(mag_K[i])); a.fill(ang_sep[i])
     
     print 'ang_sep len:', len(ang_sep)
     print 'mag_K len:', len(mag_K)
@@ -318,13 +366,18 @@ def main():
     '''
     
 
+    #print "K MASS ARRAY:", fix_K_m_array
+    if bs_choice == 's' or bs_choice == 'S':
+        print "\nSaving single mass data for Cluster "+cluster+"..."
+        np.savez('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Singles/Recalculations/'+cluster+'_sin_mass_data',
+        star_name = star_name, ang_sep=ang_sep, mag_K=mag_K, K_mass=fix_K_m_array)
+        print "Save data complete!"
     
-    print "\nSaving mass data for Cluster "+cluster+"..."
-    np.savez('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Recalculations/'+cluster+'_bin_mass_data',
-    star_name = star_name, ang_sep=ang_sep, mag_K=mag_K, K_mass=fix_K_m_array)
-    print "Save data complete!"
-    
-    
+    if bs_choice == 'b' or bs_choice == 'B':
+        print "\nSaving binary mass data for Cluster "+cluster+"..."
+        np.savez('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Recalculations/'+cluster+'_bin_mass_data',
+        star_name = star_name, ang_sep=ang_sep, mag_K=mag_K, K_mass=fix_K_m_array)
+        print "Save data complete!"
     
     
     
