@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 
 # ========================================================================== #
-# File: d_limit.py                                                           #
+# File: d_limit_mask.py                                                      #
 # Programmer: Patrick Kantorski                                              #
 # Date: 01/27/15                                                             #
 # Research: Stellar Multiplicity                                             #
 # Advisor: Gapsard Duchene                                                   #
-# Description: This program was written in Python to calculate and save      #
-#              the detection limits for specified clusters.                  #
+# Description: This program was written in Python to mask primary stars      #
+#              for computing the detection limits for specified clusters.    #
 # ========================================================================== #
 
 import numpy as np
@@ -1127,7 +1127,7 @@ def sector_mask(shape, centre, rad_inner, rad_outter, angle_range):
 
 def reboot():
     # Reboot script.
-    os.system("/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Photometry/cent_aper.py")
+    os.system("/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/d_limit_mask.py")
     sys.exit()
     
 
