@@ -6,19 +6,19 @@ from scipy import interpolate
 
 def main():
     # Loading Isochron Data & Binary/Single Magnitude Data.
-    mass = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Isochron/Isochron_Data/main/mass.txt')
-    Teff = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Isochron/Isochron_Data/main/temperature.txt')
-    age = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Isochron/Isochron_Data/main/age.txt')
-    luminosity = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Isochron/Isochron_Data/main/luminosity.txt')
+    mass = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Isochron/Isochron_Data/main/mass.txt')
+    Teff = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Isochron/Isochron_Data/main/temperature.txt')
+    age = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Isochron/Isochron_Data/main/age.txt')
+    luminosity = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Isochron/Isochron_Data/main/luminosity.txt')
     
-    m_j = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Isochron/Isochron_Data/main/m_j.txt')
-    m_h = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Isochron/Isochron_Data/main/m_h.txt')
-    m_k = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Isochron/Isochron_Data/main/m_k.txt')
+    m_j = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Isochron/Isochron_Data/main/m_j.txt')
+    m_h = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Isochron/Isochron_Data/main/m_h.txt')
+    m_k = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Isochron/Isochron_Data/main/m_k.txt')
     
-    b_absJ = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Isochron/Abs_Data/bin_AbsJ.txt')
-    b_absH = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Isochron/Abs_Data/bin_AbsH.txt')
-    b_absK = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Isochron/Abs_Data/bin_AbsK.txt')
-    s_absK = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Isochron/Abs_Data/single_AbsK.txt')
+    b_absJ = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Isochron/Abs_Data/bin_AbsJ.txt')
+    b_absH = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Isochron/Abs_Data/bin_AbsH.txt')
+    b_absK = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Isochron/Abs_Data/bin_AbsK.txt')
+    s_absK = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Isochron/Abs_Data/single_AbsK.txt')
 
     ### Code for plotting Mass vs L, Teff, & Age. ###   
     n = 1
@@ -359,7 +359,7 @@ def main():
     
     
     print "\nSaving data..."
-    np.savez('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Isochron/Abs_Data/age_data',
+    np.savez('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Isochron/Abs_Data/age_data',
     J_M= J_age, H_M= H_age, K_M= K_age, s_K_M= s_K_age)
     print "Save data complete!"
         

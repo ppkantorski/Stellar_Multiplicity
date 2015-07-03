@@ -57,6 +57,10 @@ def main():
             with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Photometry/new_binaries.txt', "r") as myfile:
                 data = myfile.readlines()
                 len_data = len(data)
+        if select == "quick":
+            with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Photometry/Quick Checks/quick.txt', "r") as myfile:
+                data = myfile.readlines()
+                len_data = len(data)
                 
         # Added selection to quickly scan through every star & identify overblown images...
         if select == "Feb17":
@@ -82,7 +86,7 @@ def main():
         while var < len_data:
             print("\n===========================================================================================\n")
             if select == "K" or select == "k" or select == "H" or select == "h" or select == "J" or select == "j" \
-            or select == "final" or select == "all" or select == "last" or select == "new" \
+            or select == "final" or select == "all" or select == "last" or select == "new" or select == "quick" \
             or select == "Feb17" or select == "Feb18" or select == "Feb19" or select == "Feb20":
                 path =  data[var].rstrip()
                 print("File with Directory:")

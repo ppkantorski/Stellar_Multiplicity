@@ -1,0 +1,10 @@
+1. look at triangles, figure out if they are mismatches or not
+2. Apply distances to the IR photometry.
+3. Add main isochrone for youngest and oldest clusters!
+4. Add single stars to the color plots!
+5. Flag (/ remove) objects that are -9.99 (J,H,K mag) from the IR Photometry.
+6. Have spreadsheet for photometric arguements!
+	- Add this to the Stellar_Multiplicity table, or another.
+	- Stat arguement below 95%
+	- Photometry okay or not okay flags
+		made from color plots!

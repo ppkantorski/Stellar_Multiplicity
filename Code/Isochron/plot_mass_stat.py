@@ -115,7 +115,7 @@ def main():
             #H_cross = 5.00
             #K_cross = 5.10
             start = 68
-            stop = 107 #+ 1
+            stop = 107 + 1
             s_start = 90
             s_stop = 112 #+ 1
             stay = False
@@ -168,7 +168,7 @@ def main():
 
     while stay == True:
         # Code for applying the upper and lower error propogation.
-        blanket = 0.01  # Should be 0.01 (happens to be the same for both).
+        blanket = 0.01 * 3  # Should be 0.01 (happens to be the same for both).
         stay_1 = True
         while stay_1 == True:
             choice = str(raw_input('Upper or Lower Error Prop.? (1|2): '))
@@ -191,6 +191,7 @@ def main():
                 break
             b_J.append(b_absJ[odd]+ sign*blanket) #Primary Stars
             b_J.append(b_absJ[even] + sign*(blanket**2 + b_DelJ[even]**2)**(0.5) ) #Companion Stars
+            #b_J.append(b_absJ[even] + sign* 3*(blanket**2 + b_DelJ[even]**2)**(0.5) )
         b_absJ = b_J
         
         b_H = []
@@ -203,6 +204,7 @@ def main():
                 break
             b_H.append(b_absH[odd]+ sign*blanket) #Primary Stars
             b_H.append(b_absH[even] + sign*(blanket**2 + b_DelH[even]**2)**(0.5) ) #Companion Stars
+            #b_H.append(b_absJ[even] + sign* 3*(blanket**2 + b_DelH[even]**2)**(0.5) )
         b_absH = b_H
         
         b_K = []
@@ -215,6 +217,7 @@ def main():
                 break
             b_K.append(b_absK[odd]+ sign*blanket) #Primary Stars
             b_K.append(b_absK[even] + sign*(blanket**2 + b_DelK[even]**2)**(0.5) ) #Companion Stars
+            #b_K.append(b_absJ[even] + sign* 3*(blanket**2 + b_DelK[even]**2)**(0.5) )
         b_absK = b_K
         
         s_absJ = s_absJ + sign*blanket
@@ -688,7 +691,10 @@ def main():
             leave = False
     """
     
-    '''
+    
+    
+    
+    
     ### Section for calculating the statistical argument... ###
     area = load_stat(cluster)[0]
     magnitude = load_stat(cluster)[1]
@@ -781,7 +787,7 @@ def main():
     print "H:", poisson_H
     print "K:", poisson_K
     ###########################################################
-    '''
+    
     
     # fixing data to be for just the cluster selected for saving.......
     J_m = []; H_m = []; K_m = []
@@ -824,11 +830,11 @@ def main():
     NG_J_M= NG_J_mass, NG_H_M= NG_H_mass, NG_K_M= NG_K_mass, NG_s_J_M= NG_s_J_mass, NG_s_H_M= NG_s_H_mass, NG_s_K_M= NG_s_K_mass,
     D_J_M= D_J_mass, D_H_M= D_H_mass, D_K_M= D_K_mass, D_s_J_M= D_s_J_mass, D_s_H_M= D_s_H_mass, D_s_K_M= D_s_K_mass)
     
-    '''
+    
     np.savez('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Stat_Argument/Stat_Data/'+cluster+'_stat_data',
     P_J = poisson_J, P_H = poisson_H, P_K = poisson_K, Comp_Names = comp_names)
     print "Save data complete!"
-    '''
+    
     
     # Run 'sort_isochron.py' after.
     print("\n=====================================================================")

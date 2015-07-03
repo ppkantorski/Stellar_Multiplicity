@@ -1,0 +1,7 @@
+Measure multiplicity properties of A & B stars, physical properties depict porperties of star formation
+Selection was made with open clusters,
+Time, stellar mass, environment -> fills in the parameter spaces
+------------------------------------------------------------------------------------------------------
+
+Download / read Duchene & Kraus 2013, a review on stellar multiplicity!
+	- Get a feel for how the paper is structured!

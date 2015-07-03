@@ -1,0 +1,7 @@
+Redo photometry for stars identified by Gaspard!
+Double check R84 b & M50!
+Hogg 13, leakage subtraction! (all 3)
+Apply 3 sigma for mass uncertainties w/ STD & STD/Avg flags.
+Add probabilities to the stat arg. section on the spreadsheet!
+Add to cluster tab, number of companions, number of stars surveyed, etc..
+Use empty circles on d.limit plot for stars w/o J & H band photometry. (as long as they are not yet flagged!)

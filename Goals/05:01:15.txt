@@ -1,0 +1,7 @@
+To Do List for 05/01/15:
+
+Examine the below 4.5 delK stars! (make list)
+Look at the photometric uncertainties for these stars!
+For color-mag & color-color diagrams, I need information from Gaspard.
+	- Hold off for a little bit, will come back.
+Raise threshold of stat. arguement to 95%.

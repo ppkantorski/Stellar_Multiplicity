@@ -134,6 +134,12 @@ def main():
                 len_data = var + 1
         
         print "\nCluster:", cluster
+        try:
+            path =  data[var].rstrip()
+        except IndexError:
+            print "End of file list has been reached!\n"
+            sys.exit()
+        
         
         if bs_choice == 'b' or bs_choice == 'B':
             bin_sep_array = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/'+cluster+'_bin_sep.txt')[0::2]

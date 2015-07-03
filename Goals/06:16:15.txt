@@ -1,0 +1,5 @@
+Apply weighted average & then fix/check remaining flages!
+Update flags again!
+Re-examine papers I looked at in the past to get an idea of the style & format / what is important to add.
+	- Fill in more information on each section in my Lyx file!
+	- Understand more about when to go in depth.

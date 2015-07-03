@@ -1,0 +1,11 @@
+Finish up Hogg 13!
+Apply upper & lower propagation to masses (0.03)!
+	- Triple the entire uncertainty on the companions that were flagged!
+Add probabilities to the stat arg. section on the spreadsheet!
+Add to cluster tab, number of companions, number of stars surveyed, etc..
+Use empty circles on d.limit plot for stars w/o J & H band photometry. (as long as they are not yet flagged!)
+Fix flags on color-color, color-mag, & detection limit plots!
+Upper limits must be propogated as arrows on the color plots!
+	- On final table (masses), add sign for less than or greather than / equal to!
+	
+	Note: flags on masses were for STD/Avg > 0.1 & mass STD > 0.02, mass ratio STD > 0.05

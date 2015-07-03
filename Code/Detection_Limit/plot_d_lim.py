@@ -128,16 +128,16 @@ if cluster != "NGC_2516":
         temp_name = star_name[i]
         temp_index = i
         #plt.plot(ang_sep[i], mag_K[i], color='r')
-        median_1 = np.median(mag_K[i][20:137])
+        median_1 = np.median(mag_K[i][50:80])
         if star_name[temp_index+1] == star_name[temp_index]:
             #plt.plot(ang_sep[i+1], mag_K[i+1], color='b')
-            median_2 = np.median(mag_K[i+1][20:137])
+            median_2 = np.median(mag_K[i+1][50:80])
             median_3 = 0
             try:
                 if star_name[temp_index+2] == star_name[temp_index]:
                     #plt.plot(ang_sep[i+2], mag_K[i+2], color='g')
                     i = i + 2
-                    median_3 = np.median(mag_K[i+2][20:137])
+                    median_3 = np.median(mag_K[i+2][50:80])
                 elif star_name[temp_index+2] != star_name[temp_index]:
                     median_3 = 0
                     i = i + 1
@@ -194,15 +194,16 @@ if cluster != "NGC_2516":
                     print "\nPossible Bad Star #"+str(i)+":", star_name[i]
     
     
-    #plt.figure(1)
-    #print "Plotting data for Cluster "+cluster+"..."
-    #plt.title("Detection Limit for Binaries in "+cluster, fontsize='20')
-    #plt.xlabel("Angular Seperation", fontsize='16')
-    #plt.ylabel("Mag K", fontsize='16')
-    #plt.xscale('log')
-    #plt.gca().invert_yaxis()
-    #for i in range(len(ang_sep)):
-    #    plt.plot(ang_sep[i], mag_K[i], 'o', color='0.3')
+    plt.figure(1)
+    print "Plotting data for Cluster "+cluster+"..."
+    plt.title("Detection Limit for Binaries in "+cluster, fontsize='20')
+    plt.xlabel("Angular Seperation", fontsize='16')
+    plt.ylabel("Mag K", fontsize='16')
+    plt.xscale('log')
+    plt.gca().invert_yaxis()
+    for i in range(len(ang_sep)):
+        plt.plot(ang_sep[i], mag_K[i], '-')
+    
     
     #print "Saving figure..."
     #plt.savefig('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Recalculations/'+cluster+'_mag_K.png')    
@@ -374,9 +375,22 @@ while i < len(s_max_mass[s_start:s_stop]):
 #print 'max mass:', max_mass[start:stop][0::2]
 
 # Plot binary data only if the cluster selected is NOT NGC 2516
+
+mass_ratio=[]; final_ang_sep=[]; final_mag_K=[];
 if cluster != "NGC_2516":
     for i in range(len(ang_sep)):
-        plt.plot(ang_sep[i], K_mass[i]/final_mass[i], '-', label=star_name[i])
+        #if ang_sep[i][0]==0:
+        #    del ang_sep[i][0]
+        #    del K_mass[i][0]
+        #    del final_mass[i][0]
+        #if ang_sep[i][0]!=0:
+        if star_name[i] == 'M291-K_Kfinal':
+            print "caught the outlier.."
+        if star_name[i] != 'M291-K_Kfinal':
+            final_mag_K.append(mag_K[i])
+            final_ang_sep.append(ang_sep[i])
+            mass_ratio.append(K_mass[i]/final_mass[i])
+            plt.plot(ang_sep[i], K_mass[i]/final_mass[i], '-', label=star_name[i])
         for j in range(len(ang_sep[i])):
             if j == 1:
                 if (K_mass[i]/final_mass[i])[j] > 1.4:
@@ -391,7 +405,17 @@ if cluster != "NGC_2516":
 #print 'single max mass length:', len(s_max_mass[s_start:s_stop])
 #print 'single star name:', s_star_name
 #print 'single max mass:', s_max_mass[s_start:s_stop]
+
+s_mass_ratio=[]; final_s_ang_sep=[]; final_s_mag_K=[]
 for i in range(len(s_ang_sep)):
+    #if s_ang_sep[i][0]==0:
+    #    del s_ang_sep[i][0]
+    #    del s_K_mass[i][0]
+    #    del s_final_mass[i][0]
+    #if s_ang_sep[i][0]!=0:
+    final_s_mag_K.append(s_mag_K[i])
+    final_s_ang_sep.append(s_ang_sep[i])
+    s_mass_ratio.append(s_K_mass[i]/s_final_mass[i])
     plt.plot(s_ang_sep[i], s_K_mass[i]/s_final_mass[i], '-', label=s_star_name[i])
     for j in range(len(s_ang_sep[i])):
         if j == 1:
@@ -405,9 +429,24 @@ for i in range(len(s_ang_sep)):
 
 print "Saving figure..."
 #plt.legend()
+#n
+plt.xlim(0.1, 10)
 plt.savefig('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Verified_Data/'+cluster+'_mass_K.png')
 plt.show()
 
+#mass_ratio = K_mass/final_mass
+#s_mass_ratio = s_K_mass/s_final_mass
+
+print "\nSaving data for Cluster "+cluster+"..."
+if cluster != "NGC_2516":
+    np.savez('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Verified_Data/'+cluster+'_data',
+    star_name = star_name, ang_sep=final_ang_sep, mass_ratio=mass_ratio, mag_K=final_mag_K,
+    s_star_name=s_star_name, s_ang_sep=final_s_ang_sep, s_mass_ratio=s_mass_ratio, s_mag_K=final_s_mag_K)
+if cluster == "NGC_2516":
+    np.savez('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Verified_Data/'+cluster+'_data',
+    s_star_name=s_star_name, s_ang_sep=final_s_ang_sep, s_mass_ratio=s_mass_ratio, s_mag_K=final_s_mag_K)
+    
+print "Save data complete!"
 
 
 # Re-execute program.

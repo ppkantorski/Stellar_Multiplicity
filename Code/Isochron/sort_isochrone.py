@@ -78,7 +78,7 @@ def main():
             start = 68
             stop = 107 + 1
             s_start = 92
-            s_stop = 114 + 1
+            s_stop = 112# + 1
             i == False
             break
         else:
@@ -123,6 +123,7 @@ def main():
     b_DelH = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Isochron/Abs_Data/bin_DelH.txt')
     b_DelK = np.loadtxt('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Isochron/Abs_Data/bin_DelK.txt')
     
+    #print s_absJ
     
     b_J = []; b_H = []; b_K = []
     s_J = []; s_H = []; s_K = []

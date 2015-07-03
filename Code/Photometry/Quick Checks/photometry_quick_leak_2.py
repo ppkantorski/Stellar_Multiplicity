@@ -58,6 +58,7 @@ def main():
                 data = myfile.readlines()
                 len_data = len(data)
                 
+                
         # Added selection to quickly scan through every star & identify overblown images...
         if select == "Feb17":
             with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/feb17_files.txt', "r") as myfile:

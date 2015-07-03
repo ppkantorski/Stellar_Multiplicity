@@ -1,0 +1,13 @@
+Look up Binomial Statistics!  Apply to find MF & CF!
+Distributions of seperations (in AU) and mass ratios.
+	- For close seperations, companions are less detectable.
+	- Make raw distribution values!
+	- Make histogram!  Use log scale for seperation!
+		-> 4 or 5 bins across!
+Plot mass of primary vs mass of companion!
+	- This like previous section are only for the non-flagged companions!
+	- scatterplot!
+Examine articles in Intermediate-mass stars section of Duchene 2013!
+	- Kouwenhoven, Brown & Kaper 2007a, Shatsky & Tokovinin 2002
+	- De Rosa et al. 2014
+	- These articles are more in the format of the type of report we are making

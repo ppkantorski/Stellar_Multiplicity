@@ -140,6 +140,57 @@ def main():
         i = 0; j = 0;
         while i < len(star_name):
             try:
+                plt.plot(ang_sep[i], mag_K[i], '-', label= names[j])
+                if star_name[i] == star_name[i+1]:
+                    i = i + 1
+                    plt.plot(ang_sep[i], mag_K[i], '-')
+                    if star_name[i] == star_name[i+1]:
+                        i = i + 1
+                        plt.plot(ang_sep[i], mag_K[i], '-')
+            except IndexError:
+                print 'Index:', i
+                print 'length:', len(star_name)
+                print 'End of list reached!'
+            i = i + 1
+            j = j + 1
+    
+    
+    if bs_choice == 'b' or bs_choice == 'B':
+        i = 0; j = 0;
+        while i < len(star_name):        
+            try:
+                plt.plot(ang_sep[i], mag_K[i], '-', label= names[j])
+                if star_name[i] == star_name[i+1]:
+                    i = i + 1
+                    plt.plot(ang_sep[i], mag_K[i], '-')
+                    if star_name[i] == star_name[i+1]:
+                        i = i + 1
+                        plt.plot(ang_sep[i], mag_K[i], '-')
+                if names[j] == names[j+1]:
+                    j = j + 1
+                    if names[j] == names[j+1]:
+                        j = j + 1
+            except IndexError:
+                print 'length:', len(star_name)
+                print 'End of list reached!'
+            i = i + 1
+            j = j + 1
+    
+    plt.title('Delta K Plot for '+cluster, fontsize='22')                                                  
+    plt.xlabel('Angular Seperation', fontsize='18')                                           
+    plt.ylabel('Mag_K', fontsize='18')                                                        
+    plt.xscale('log')    
+    plt.gca().invert_yaxis()
+    #plt.legend()                  
+    plt.show()
+    
+    
+    
+    
+    if bs_choice == 's' or bs_choice == 'S':
+        i = 0; j = 0;
+        while i < len(star_name):
+            try:
                 print 'i:', i, 'j:', j
                 print star_name[i], names[j], absK[j]
                 mag_K[i] = mag_K[i] + absK[j]
@@ -155,7 +206,6 @@ def main():
                         i = i + 1
                         plt.plot(ang_sep[i], mag_K[i], '-')
                         print star_name[i], names[j], absK[j]
-        
                         
             except IndexError:
                 print 'Index:', i
@@ -176,13 +226,13 @@ def main():
                 if star_name[i] == star_name[i+1]:
                     mag_K[i+1] = mag_K[i+1] + absK[j]
                     i = i + 1
-                    plt.plot(ang_sep[i], mag_K[i], '.')
+                    plt.plot(ang_sep[i], mag_K[i], '-')
                     print star_name[i], names[j], absK[j]
                     
                     if star_name[i] == star_name[i+1]:
                         mag_K[i+1] = mag_K[i+1] + absK[j]
                         i = i + 1
-                        plt.plot(ang_sep[i], mag_K[i], '.')
+                        plt.plot(ang_sep[i], mag_K[i], '-')
                         print star_name[i], names[j], absK[j]
         
                 if names[j] == names[j+1]:
@@ -204,13 +254,13 @@ def main():
     
     #for i in range(len(mag_K)):
     #    plt.plot(ang_sep[i], mag_K[i], '.')
-    plt.title('Delta K Plot for '+cluster, fontsize='22')                                                  
-    plt.xlabel('Angular Seperation', fontsize='18')                                           
-    plt.ylabel('Mag_K', fontsize='18')                                                        
-    plt.xscale('log')    
-    plt.gca().invert_yaxis()
+    #plt.title('Delta K Plot for '+cluster, fontsize='22')                                                  
+    #plt.xlabel('Angular Seperation', fontsize='18')                                           
+    #plt.ylabel('Mag_K', fontsize='18')                                                        
+    #plt.xscale('log')    
+    #plt.gca().invert_yaxis()
     #plt.legend()                  
-    plt.show()
+    #plt.show()
     
     #######################################################################
 
@@ -370,13 +420,13 @@ def main():
     if bs_choice == 's' or bs_choice == 'S':
         print "\nSaving single mass data for Cluster "+cluster+"..."
         np.savez('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Singles/Recalculations/'+cluster+'_sin_mass_data',
-        star_name = star_name, ang_sep=ang_sep, mag_K=mag_K, K_mass=fix_K_m_array)
+        star_name = star_name, ang_sep=ang_sep, mag_K=data['mag_K'], K_mass=fix_K_m_array)
         print "Save data complete!"
     
     if bs_choice == 'b' or bs_choice == 'B':
         print "\nSaving binary mass data for Cluster "+cluster+"..."
         np.savez('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Detection_Limit/Binaries/Recalculations/'+cluster+'_bin_mass_data',
-        star_name = star_name, ang_sep=ang_sep, mag_K=mag_K, K_mass=fix_K_m_array)
+        star_name = star_name, ang_sep=ang_sep, mag_K=data['mag_K'], K_mass=fix_K_m_array)
         print "Save data complete!"
     
     

@@ -315,14 +315,16 @@ def main():
             sorted_x.append(sorted_data[i][0])                                                                  #
             sorted_y.append(sorted_data[i][1])                                                                  #
                                                                                                                 #
-        #plt.clf()
-        #plt.plot(sorted_x, sorted_y, color='k')
-        #plt.xlabel('Angular Seperation', fontsize='18')
-        #plt.ylabel('Delta K', fontsize='18')
-        #plt.xscale('log')
-        #plt.gca().invert_yaxis()
+        plt.clf()
+        plt.plot(sorted_x, sorted_y, color='k')
+        plt.xlabel('Angular Seperation', fontsize='18')
+        plt.ylabel('Delta K', fontsize='18')
+        plt.xscale('log')
+        plt.gca().invert_yaxis()
         #plt.show()                
         
+        
+
         all_names.append(name)
         all_ang_sep.append(sorted_x)
         all_mag_K.append(sorted_y)

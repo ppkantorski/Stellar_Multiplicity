@@ -57,6 +57,10 @@ def main():
             with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Photometry/new_binaries.txt', "r") as myfile:
                 data = myfile.readlines()
                 len_data = len(data)
+        if select == "quick":
+            with open ('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Photometry/Quick Checks/quick.txt', "r") as myfile:
+                data = myfile.readlines()
+                len_data = len(data)
                 
         # Added selection to quickly scan through every star & identify overblown images...
         if select == "Feb17":
@@ -82,7 +86,7 @@ def main():
         while var < len_data:
             print("\n===========================================================================================\n")
             if select == "K" or select == "k" or select == "H" or select == "h" or select == "J" or select == "j" \
-            or select == "final" or select == "all" or select == "last" or select == "new" \
+            or select == "final" or select == "all" or select == "last" or select == "new" or select == "quick"\
             or select == "Feb17" or select == "Feb18" or select == "Feb19" or select == "Feb20":
                 path =  data[var].rstrip()
                 print("File with Directory:")
@@ -112,17 +116,23 @@ def main():
                 ### Noise calculation... ###
                 print("\nPosition #1 For Noise Calculation.")
                 print("--- Noise Position ---")
-                x_pos_1 = float(raw_input("X Position #1: "))
-                y_pos_1 = float(raw_input("Y Position #1: "))
-                width_1 = float(raw_input("Enter width of box around sky: "))
+                #x_pos_1 = float(raw_input("X Position #1: "))
+                #y_pos_1 = float(raw_input("Y Position #1: "))
+                x_pos_1 = 106
+                y_pos_1 = 213
+                #width_1 = float(raw_input("Enter width of box around sky: "))
+                width_1 = 7
                 std_noise_1 = centroid(image, width_1, x_pos_1, y_pos_1)[2]
                 print "Standard Deviation of Noise #1:", std_noise_1
                 
                 print("\nPosition #2 For Noise Calculation.")
                 print("--- Noise Position ---")
-                x_pos_2 = float(raw_input("X Position #2: "))
-                y_pos_2 = float(raw_input("Y Position #2: "))
-                width_2 = float(raw_input("Enter width of box around sky: "))
+                #x_pos_2 = float(raw_input("X Position #2: "))
+                #y_pos_2 = float(raw_input("Y Position #2: "))
+                x_pos_2 = 227
+                y_pos_2 = 92
+                #width_2 = float(raw_input("Enter width of box around sky: "))
+                width_2 = 7
                 std_noise_2 = centroid(image, width_2, x_pos_2, y_pos_2)[2]
                 print "Standard Deviation of Noise #2:", std_noise_2
 
@@ -178,9 +188,13 @@ def main():
                 ### Enter companion star's information... ###
                 print("\nInsert values to verify star.")
                 print("--- Companion Star ---")
-                x_pos_2 = x_cent_1 + (144.252422486 - 163.338428234)
-                y_pos_2 = y_cent_1 + (193.484011643 - 153.769067772)
-                width_2 = 5.
+                #x_pos_2 = float(raw_input("X Position #2: "))
+                #y_pos_2 = float(raw_input("Y Position #2: "))
+                #width_2 = float(raw_input("Enter width of box around companion star: "))
+                
+                x_pos_2 = 175
+                y_pos_2 = 170
+                width_2 = 3
 
                 # Find centroid for secondary...
                 x_cent_2 = centroid(image, width_2, x_pos_2, y_pos_2)[0]
@@ -205,7 +219,7 @@ def main():
 
                 # This section was created to handle the leakage affecting M409 & M42.
                 print("\n--- Leakage Compensation #1 ---")
-                x_pos_3 = x_cent_2 + 2.*np.abs(x_cent_1 - x_cent_2)
+                x_pos_3 = x_cent_2 - 2.*np.abs(x_cent_1 - x_cent_2)
                 y_pos_3 = y_cent_2
                 flux_leak_1 = aperature(image, x_pos_3, y_pos_3, std_noise)[0]
                 print "Position #1 (x,y):", x_pos_3, y_pos_3
@@ -219,7 +233,7 @@ def main():
                 print "Leakage Flux #2:", flux_leak_2
                 
                 print("\n--- Leakage Compensation #3 ---")
-                x_pos_5 = x_cent_2 + 2.*np.abs(x_cent_1 - x_cent_2)
+                x_pos_5 = x_cent_2 - 2.*np.abs(x_cent_1 - x_cent_2)
                 y_pos_5 = y_cent_2 - 2.*np.abs(y_cent_1 - y_cent_2)
                 flux_leak_3 = aperature(image, x_pos_5, y_pos_5, std_noise)[0]
                 print "Position #3 (x,y):", x_pos_5, y_pos_5

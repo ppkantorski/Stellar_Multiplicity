@@ -44,7 +44,7 @@ def main():
             
     
     # Loads stat data
-    data = np.load('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Stat_Argument/Stat_Data/'+cluster+'_stat_data.npz')
+    data = np.load('/Users/ppkantorski/Documents/Research/Stellar_Multiplicity/Code/Stat_Argument/Stat_Data/'+cluster+'_stat_data.npz')
     
     poisson_J = data['P_J']
     poisson_H = data['P_H']

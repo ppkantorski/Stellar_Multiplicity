@@ -69,23 +69,152 @@ Stellar Multiplicity Plots
 \end_layout
 
 \begin_layout Section
-Maybe a Couple Binaries?
+Binary & Single Star Tables
+\end_layout
+
+\begin_layout Standard
+The binary and single star tables include information on the star's spectral
+ type, cluster distances, absolute J, H & K magnitudes, delta J, H & K,
+ angular seperations, and primary angles.
+ These were calculated using the 
+\begin_inset Quotes eld
+\end_inset
+
+cent_aper_final.py
+\begin_inset Quotes erd
+\end_inset
+
+ program in the 
+\begin_inset Quotes eld
+\end_inset
+
+Photometry
+\begin_inset Quotes erd
+\end_inset
+
+ folder.
+ Isochrone reduced masses are also displayed on the spreadsheet.
+\end_layout
+
+\begin_layout Section
+Cluster Tables
+\end_layout
+
+\begin_layout Standard
+The cluster tables in the spreadsheet display the distances and ages for
+ each cluster.
 \end_layout
 
 \begin_layout Section
 Isochrones for Clusters
 \end_layout
 
+\begin_layout Standard
+For mass ratios below 0.5, we used the NextGen isochrone.
+ Additionally, we examined the isochrone mass vs luminosity, effective temperatu
+re, and age, age vs apparent magnitude, and the mass histogram for each
+ cluster (isochron_age.py).
+\end_layout
+
 \begin_layout Section
 Color Diagrams
+\end_layout
+
+\begin_layout Standard
+The color diagrams were made with the program 
+\begin_inset Quotes eld
+\end_inset
+
+plot_mass_stat.py
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+plot_data_all.py
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The color diagrams show (J-K) mag and (H-K) mag vs K mag for each cluster
+ along with their relevant uncertainties.
 \end_layout
 
 \begin_layout Section
 Statistical Argument
 \end_layout
 
+\begin_layout Standard
+The statistical argument is calculated in the program 
+\begin_inset Quotes eld
+\end_inset
+
+plot_mass_stat.py
+\begin_inset Quotes erd
+\end_inset
+
+ and is printed using 
+\begin_inset Quotes eld
+\end_inset
+
+print_stat_data.py
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Additionally, a table showing the results of the statistical argument calculati
+ons for each cluster is shown on 
+\begin_inset Quotes eld
+\end_inset
+
+Stat_Argument.xls
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Section
 Detection Limits
+\end_layout
+
+\begin_layout Standard
+The detection limit for both binaries and singles in each cluster was calculated
+ by using 
+\begin_inset Quotes eld
+\end_inset
+
+d_limit_mask.py
+\begin_inset Quotes erd
+\end_inset
+
+ to mask out stars for each binaries, 
+\begin_inset Quotes eld
+\end_inset
+
+d_limit_centroids.py
+\begin_inset Quotes erd
+\end_inset
+
+ to calculate centroids for every image, 
+\begin_inset Quotes eld
+\end_inset
+
+d_lim_calc.py
+\begin_inset Quotes erd
+\end_inset
+
+ to calculate and sort the actual detection limits, and 
+\begin_inset Quotes eld
+\end_inset
+
+plot_d_lim.py
+\begin_inset Quotes erd
+\end_inset
+
+ to plot the detection limits.
 \end_layout
 
 \end_body
